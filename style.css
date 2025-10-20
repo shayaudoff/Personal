@@ -1,0 +1,682 @@
+/* === RESET + BASE === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #000;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-size: 100% auto;
+  background-color: transparent;
+  padding-top: 40px;
+}
+
+/* === PAGE TOP SPACING FOR NON-HOMEPAGE PAGES === */
+body.photo-page,
+body.projects-page,
+body.about-page,
+body.quote-page {
+  padding-top: 50px; /* similar spacing to homepage */
+}
+
+/* === PAGE BACKGROUNDS === */
+/* === PAGE BACKGROUNDS === */
+body.home-page {
+  background-image: url('img/AZ_sunset.jpeg');
+}
+
+/* === PHOTO PAGE BACKGROUND === */
+body.photo-page,
+body.photo-page.locked {
+  background-image: url('img/AZ_sunset.jpeg'); /* ensure correct file path */
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+body.about-page {
+  background-image: url('img/AZ_sunset.jpeg');
+}
+
+body.contact-page {
+  background-image: url('img/AZ_sunset.jpeg'); /* ensure correct filename */
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-size: cover; /* ensures the image fills the screen */
+  min-height: 100vh;
+}
+
+body.project-page {
+  background-image: url('img/AZ_sunset.jpeg');
+}
+
+/* === NAVBAR === */
+.navbar {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 900px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  z-index: 1100;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: #eaeaea;
+}
+
+.navbar a.active::after {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 2px;
+  background: #000;
+  position: absolute;
+  left: 20%;
+  bottom: 2px;
+}
+
+/* === HOMEPAGE BOXES === */
+.name,
+.about-me-box,
+.social-media-box,
+.lock-box,
+.quote-card,
+#contact-form,
+footer {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  backdrop-filter: blur(5px);
+}
+
+/* === HOMEPAGE ABOUT ME BOX === */
+.about-me {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+}
+
+.about-me-box {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  max-width: 450px; /* limit width to 450px */
+  width: 100%;
+  text-align: center;
+}
+
+.about-me-box h2 {
+  font-size: 2rem;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.about-me-box p,
+.about-me-box i {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #000;
+  font-family: Arial, sans-serif;
+}
+
+/* Homepage Name Box */
+.name {
+  display: block;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  margin: 30px auto 20px;
+}
+
+/* === ABOUT PAGE BOXES === */
+.about,
+.about-content {
+  max-width: 600px;
+  width: calc(100% - 80px);
+  margin: 60px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* === ABOUT PAGE CONTENT BOX === */
+.about-content {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 30px 35px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  backdrop-filter: blur(5px);
+  max-width: 600px;
+  margin: 60px auto;
+  text-align: center;
+}
+
+.about-header {
+  text-align: center;
+  color: #333;
+  font-family: "Courier New", Courier, monospace;
+  margin: 40px auto 20px;
+}
+
+.about-header h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.about-header p {
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+
+.about-text,
+.about-content,
+.about-content p,
+.about-content h4 {
+  color: #333;
+  font-family: "Courier New", Courier, monospace;
+  line-height: 1.6;
+}
+
+/* === CONTACT HEADER === */
+.contact-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 80px auto 40px;
+  padding: 25px 30px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.contact-header h2 {
+  font-size: 2rem;
+  color: #000;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  margin-bottom: 15px;
+}
+
+.contact-header p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #000;
+}
+
+/* === SOCIAL MEDIA BOXES === */
+.social-media-box {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 20px 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  backdrop-filter: blur(5px);
+  max-width: 400px;
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.social-media-box h4 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #000;
+  font-weight: bold;
+}
+
+.social-media-box a {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  margin: 5px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-media-box a img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.social-media-box a:hover {
+  transform: scale(1.2);
+  z-index: 3;
+}
+
+/* === WHATSAPP BUTTON === */
+.whatsapp a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #25D366;
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1rem;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.whatsapp a:hover {
+  background-color: #128C7E;
+  transform: scale(1.05);
+}
+
+/* === QUOTE CARDS === */
+body.quote-page {
+  background-image: url('img/AZ_sunset.jpeg'); /* ensure file exists in img folder */
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
+  padding-top: 120px; /* space for fixed navbar */
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.quotes-header-container {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.quotes-header-container h2 {
+  font-size: 2.2rem;
+  color: #000;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  margin-bottom: 10px;
+}
+
+.quotes-header-container h5 {
+  font-size: 1.1rem;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+.quote-card {
+  position: relative;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  padding: 25px 30px 50px 30px; /* extra bottom padding for copy button */
+  margin: 20px auto;
+  max-width: 700px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quote-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+.quote-text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #000;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.quote-author {
+  font-size: 1rem;
+  color: #333;
+  text-align: right;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.copy-btn {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: rgba(255, 255, 255, 0);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: #333;
+  transform: scale(1.1);
+}
+
+.copy-btn svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  stroke: #fff;
+}
+
+.quote-card {
+  position: relative;
+  padding: 20px 30px;
+  max-width: 510px;
+  margin: 15px auto;
+  text-align: center;
+}
+
+.quote-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.quote-text {
+  font-style: italic;
+  color: #000;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.quote-author {
+  display: block;
+  font-size: 1rem;
+  color: #555;
+  text-align: right;
+  margin-top: 12px;
+}
+
+/* === CONTACT FORM STYLE === */
+#contact-form {
+  max-width: 500px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 30px 35px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+}
+
+#contact-form h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+#contact-form label {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #000;
+}
+
+#contact-form input,
+#contact-form textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  color: #000;
+  font-size: 1rem;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+#contact-form button {
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#contact-form button:hover {
+  background: rgba(0,0,0,0.85);
+  transform: scale(1.03);
+}
+
+/* === FOOTER BOX === */
+footer {
+  width: calc(100% - 80px);
+  margin: 40px auto 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* === LOCK BOX === */
+.lock-overlay,
+.lock-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lock-box {
+  padding: 30px 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 768px) {
+  footer span { display: block; margin: 0; }
+}
+
+@media (max-width: 600px) {
+  .photo-gallery { padding: 16px; }
+  .photo-grid {
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+  .navbar h1 { font-size: 1.1rem; }
+}
+
+
+/* === PHOTO PAGE STYLE === */
+.photo-gallery {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.photo-gallery h2 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #000;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.photo-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+}
+
+/* Lightbox Overlay */
+#lightboxOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 1200;
+}
+
+#lightboxOverlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 15px;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+#lightboxOverlay img:hover {
+  transform: scale(1.02);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .photo-gallery h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  .photo-grid {
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+  .photo-grid img {
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-gallery h2 {
+    font-size: 1.5rem;
+  }
+  .photo-grid {
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+  .photo-grid img {
+    height: 100px;
+  }
+}
+/* === PROJECTS PAGE BOX === */
+.projects-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding-top: 150px; /* space from navbar */
+}
+
+.projects-container .under-construction {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  padding: 50px 40px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.road-block {
+  font-size: 7.5rem;
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  text-align: center;
+  z-index: 1200;
+}
+
+/* === Quotes Button on Projects Page === */
+.projects-container .under-construction .quotes-link {
+  display: inline-block;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #3333332a, #33333366);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .under-construction {
+    padding: 40px 25px;
+  }
+  .under-construction h2 {
+    font-size: 2rem;
+  }
+  .under-construction p {
+    font-size: 1.1rem;
+  }
+  .under-construction .construction-icon {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .under-construction {
+    padding: 30px 20px;
+  }
+  .under-construction h2 {
+    font-size: 1.8rem;
+  }
+  .under-construction p {
+    font-size: 1rem;
+  }
+  .under-construction .construction-icon {
+    font-size: 3rem;
+  }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quotes</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+</head>
+<body class="quote-page">
+  <nav class="navbar">
+    <ul>
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="photopage.html">Photos</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="quotes-header-container">
+    <h2>Quotes for Wisdom and Inspiration</h2>
+    <h5>If one inspires you, hit that copy button and inspire others</h5>
+  </div>
+
+  <!-- Example Quote Card -->
+  <div class="quote-card">
+    <span class="quote-text">It is not what we do, but also what we do not do, for which we are accountable.</span>
+    <span class="quote-author">– Maimonides</span>
+    <button class="copy-btn" onclick="copyQuote(this)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </button>
+  </div>
+
+<script>
+function copyQuote(btn) {
+  const quoteCard = btn.closest('.quote-card');
+  const text = quoteCard.querySelector('.quote-text').innerText + " " + quoteCard.querySelector('.quote-author').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    alert("Quote copied to clipboard!");
+  });
+}
+
+function downloadQuote(btn) {
+  const quoteCard = btn.closest('.quote-card');
+  const text = quoteCard.querySelector('.quote-text').innerText + "\n" + quoteCard.querySelector('.quote-author').innerText;
+  const blob = new Blob([text], {type: "text/plain"});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = "quote.txt";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
+</body>
+</html>
