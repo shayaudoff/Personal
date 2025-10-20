@@ -7,77 +7,92 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body class="about-page">
-<nav class="navbar">
-  <ul>
-    <li><a href="homepage.html">Home</a></li>
-    <li><a href="photopage.html">Photos</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="about.html" class="active">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
-    <main class="about-container">
-        <section class="about-header">
-  <div class="about-header">
-    <h2>About Me</h2>
-    <p>a bit more about me</p>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="brand">Shaya Udoff</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="photopage.html">Photos</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="mobile-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile side panel -->
+  <div class="side-panel" id="sidePanel">
+    <button class="close-btn" id="closePanel">&times;</button>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="photopage.html">Photos</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
   </div>
-</section>
-        <section class="about-content">
-          <div class="about-text">
-            <!-- Add your own information here -->
-           <p>
-<h4>Hi &#128075;&#127995;, my name is Shaya Udoff</h4> ...and let me introduce myself.<br><br>
 
-As Confucius is often contributed to have said
+  <!-- Page Content -->
+  <div class="page-content">
+    <section class="about-me card">
+      <h2>About Me</h2>
+      <p>
+        Hi 👋🏽, my name is Shaya Udoff, and let me introduce myself.<br><br>
 
-<br><i>"Choose a job you love, and you never have to work a day in your life"</i><br><br>
+        As Confucius is often contributed to have said:<br>
+        <i>"Choose a job you love, and you never have to work a day in your life"</i><br><br>
 
-So with that in mind, I believe entrepreneurship is more than just a career path for me — it's a hobby.<br><br>
+        So with that in mind, I believe entrepreneurship is more than just a career path for me — it's a hobby.<br><br>
 
-I’ve built multiple ventures from the ground up, including Glisten Glass Art, where I serve as CEO, turning creativity into a business that combines artistry and strategy.<br><br>
+        I’ve built multiple ventures from the ground up, including Glisten Glass Art, where I serve as CEO, turning creativity into a business that combines artistry and strategy.<br><br>
 
-At UB Constructs, as co-founder and CFO, I manage finances and operations, learning how to balance risk and opportunity in real-time.<br><br>
+        At UB Constructs, as co-founder and CFO, I manage finances and operations, learning how to balance risk and opportunity in real-time.<br><br>
 
-I also help develop projects at Insiyt as CTO, applying technology and innovation to bring ideas to life.<br><br>
+        I also help develop projects at Insiyt as CTO, applying technology and innovation to bring ideas to life.<br><br>
 
-In addition to my ventures, I actively trade IPOs on Robinhood, exploring the financial markets and understanding how to grow wealth intelligently.<br><br>
+        In addition to my ventures, I actively trade IPOs on Robinhood, exploring the financial markets and understanding how to grow wealth intelligently.<br><br>
 
-I see every project—whether a startup, an investment, or a new skill—as a chance to challenge myself, learn, and improve.<br><br>
+        I see every project—whether a startup, an investment, or a new skill—as a chance to challenge myself, learn, and improve.<br><br>
 
-Studying Business Science allows me to deepen my knowledge of marketing, strategy, and leadership, giving me the tools to take my ideas further and make them sustainable.<br><br>
+        Studying Business Science allows me to deepen my knowledge of marketing, strategy, and leadership, giving me the tools to take my ideas further and make them sustainable.<br><br>
 
-I thrive on new challenges and experiences, whether that’s traveling to new places, mountain biking the trails, or hitting the water for wakeboarding and wakesurfing.<br><br>
+        I thrive on new challenges and experiences, whether that’s traveling to new places, mountain biking the trails, or hitting the water for wakeboarding and wakesurfing.<br><br>
 
-My goal is to combine creativity, discipline, and strategic thinking to build ventures that are both successful and meaningful.<br><br>
+        My goal is to combine creativity, discipline, and strategic thinking to build ventures that are both successful and meaningful.<br><br>
 
-Everything I do is part of a larger mission: to learn, grow, and create opportunities that push me forward while inspiring others around me.
-</p>
-          </div>
-        </section>
-    </main>
-<!-- Footer -->
-  <footer>
-  <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
-  <span class="rights-part"><i>all rights reserved</i></span>
-</footer>
+        Everything I do is part of a larger mission: to learn, grow, and create opportunities that push me forward while inspiring others around me.
+      </p>
+    </section>
+  </div>
 
-<script>
-  let lastScrollTop = 0;
-  const navbar = document.querySelector('.navbar');
+  <!-- Footer -->
+  <footer class="card">
+    <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
+    <span class="rights-part"><i>All rights reserved</i></span>
+  </footer>
 
-  window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  <!-- Mobile toggle script -->
+  <script>
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const sidePanel = document.getElementById('sidePanel');
+    const closePanel = document.getElementById('closePanel');
 
-    if(scrollTop > lastScrollTop){
-      // Scrolling down
-      navbar.style.top = "-60px";
-    } else {
-      // Scrolling up
-      navbar.style.top = "0";
-    }
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-  }, false);
-</script>
+    mobileToggle.addEventListener('click', () => {
+      sidePanel.classList.add('open');
+    });
+
+    closePanel.addEventListener('click', () => {
+      sidePanel.classList.remove('open');
+    });
+  </script>
 </body>
 </html>

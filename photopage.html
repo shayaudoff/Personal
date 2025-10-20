@@ -3,115 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Don't have the code, lol</title>
+  <title>Photos</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Lock overlay styles */
-    .lock-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    .lock-box {
-      background: rgba(255, 255, 255, 0.08);
-      padding: 30px 40px;
-      border-radius: 15px;
-      text-align: center;
-      max-width: 400px;
-      width: 90%;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      backdrop-filter: blur(5px);
-    }
-    .lock-box h2 {
-      margin-bottom: 20px;
-      font-size: 1.8rem;
-      color: #000;
-    }
-    .lock-box input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: none;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.25);
-      font-size: 1rem;
-      color: #000;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
-    }
-    .lock-box input:focus {
-      outline: none;
-      background: rgba(255,255,255,0.4);
-      box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    }
-    .lock-box button {
-      width: 100%;
-      padding: 12px;
-      background: rgba(0,0,0,0.7);
-      color: #fff;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .lock-box button:hover {
-      background: rgba(0,0,0,0.85);
-      transform: scale(1.03);
-    }
-    .lock-message {
-      margin-top: 10px;
-      font-size: 0.9rem;
-      color: #000;
-    }
+    /* Prevent scrolling when page is locked, but keep navbar accessible */
     body.locked {
       overflow: hidden;
     }
-
-    /* ✅ FIXED NAVBAR */
-    nav.navbar {
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 900px;
-      background-color: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      padding: 15px 0;
-      display: flex;
-      justify-content: center;
-      z-index: 1100;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    body.locked .page-content {
+      pointer-events: none; /* disables scrolling and interaction with content */
     }
-
-    /* Add space for navbar so content doesn’t hide behind it */
-    body {
-      padding-top: 100px;
+    body.locked .navbar,
+    body.locked .mobile-toggle {
+      pointer-events: auto; /* allow navbar interactions */
     }
   </style>
 </head>
 <body class="photo-page locked">
+
+  <!-- Navbar -->
   <nav class="navbar">
-  <ul>
-    <li><a href="homepage.html">Home</a></li>
-    <li><a href="photopage.html" class="active">Photos</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
-    <!-- 🔒 Lock overlay -->
-  <div id="lockOverlay" class="lock-overlay">
-    <div class="lock-box">
+    <div class="navbar-inner">
+      <div class="brand">Shaya Udoff</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="photopage.html" class="active">Photos</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="mobile-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile side panel -->
+  <div class="side-panel" id="sidePanel">
+    <button class="close-btn" id="closePanel">&times;</button>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="photopage.html" class="active">Photos</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Lock Overlay -->
+  <div id="lockOverlay" class="lock-overlay" style="position:fixed; top:80px; left:0; right:0; bottom:0; background: rgba(0,0,0,0.7); display:flex; justify-content:center; align-items:center; z-index:1100;">
+    <div class="lock-box" style="background: rgba(255,255,255,0.08); padding: 30px 40px; border-radius:15px; text-align:center; max-width:400px; width:90%; box-shadow:0 4px 15px rgba(0,0,0,0.3); backdrop-filter:blur(5px);">
       <h2>Access Photos</h2>
       <form id="lockForm">
         <input type="password" id="accessCode" maxlength="4" placeholder="0000" />
@@ -121,21 +66,35 @@
     </div>
   </div>
 
-  <section class="photo-gallery">
-    <h2>All Photos</h2>
-    <div class="photo-grid" id="photoGrid"></div>
-  </section>
+  <!-- Page Content -->
+  <div class="page-content">
+    <section class="photo-gallery card">
+      <h2>All Photos</h2>
+      <div class="photo-grid" id="photoGrid"></div>
+    </section>
+  </div>
 
   <!-- Lightbox Overlay -->
   <div id="lightboxOverlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:1200;">
     <img id="lightboxImage" src="" alt="" style="max-width:90%; max-height:90%; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.5);" />
   </div>
 
+  <!-- Footer -->
+  <footer class="card">
+    <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
+    <span class="rights-part"><i>All rights reserved</i></span>
+  </footer>
+
+  <!-- Scripts -->
   <script>
     // ===== Dynamic Photo Loader with Lightbox =====
     const photos = [
       "001.jpeg","002.jpeg","003.jpeg","004.jpeg","005.jpeg",
-      "006.jpeg","007.jpeg","008.jpeg","009.jpeg","010.jpeg"
+      "006.jpeg","007.jpeg","007.jpeg","007.jpeg","007.jpeg",
+      "007.jpeg","007.jpeg","007.jpeg","007.jpeg","007.jpeg",
+      "007.jpeg","007.jpeg","007.jpeg","007.jpeg","007.jpeg",
+      "007.jpeg","007.jpeg","007.jpeg","007.jpeg","007.jpeg",
+      "007.jpeg","007.jpeg","007.jpeg","007.jpeg","007.jpeg",
     ];
 
     photos.sort((a,b) => a.localeCompare(b, undefined, { numeric:true, sensitivity:"base" }));
@@ -162,32 +121,34 @@
       lightboxOverlay.style.display = "none";
       lightboxImage.src = "";
     });
+
     // ===== Code Lock Section =====
-    const correctCode = "0000";
+    const correctCode = "8886";
     const overlay = document.getElementById("lockOverlay");
     const input = document.getElementById("accessCode");
     const message = document.getElementById("lockMessage");
-    const unlockBtn = document.getElementById("unlockBtn");
-    const body = document.body;
     const lockForm = document.getElementById("lockForm");
+    const body = document.body;
 
-    lockForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (input.value === correctCode) {
-        overlay.style.display = "none"; // hide the overlay
-        body.classList.remove("locked");
-      } else {
-        message.textContent = "Incorrect code. Try again.";
-        message.style.color = "red";
-        input.value = "";
-      }
-    });
+lockForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (input.value === correctCode) {
+    overlay.style.display = "none"; // hide the overlay
+    body.classList.remove("locked");
+  } else {
+    message.innerHTML = 'Incorrect code. Try again.<br><span style="color:white;">Hint: last four digits of phone number.</span>';
+    input.value = "";
+  }
+});
+
+    // Mobile toggle
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const sidePanel = document.getElementById('sidePanel');
+    const closePanel = document.getElementById('closePanel');
+
+    mobileToggle.addEventListener('click', () => sidePanel.classList.add('open'));
+    closePanel.addEventListener('click', () => sidePanel.classList.remove('open'));
   </script>
-<!-- Footer -->
-  <footer>
-  <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
-  <span class="rights-part"><i>all rights reserved</i></span>
-</footer>
 
 </body>
 </html>

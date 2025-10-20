@@ -5,98 +5,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shaya Udoff</title>
   <link rel="stylesheet" href="style.css" />
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/>
-<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
-<style>
-  .navbar {
-    transition: top 0.3s;
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 900px;
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 15px 0;
-    display: flex;
-    justify-content: center;
-    z-index: 1100;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
-  .name {
-    margin-top: 80px;
-  }
-  .about-box {
-    margin-top: 20px;
-  }
-  body {
-    padding-top: 100px;
-  }
-</style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 </head>
-<body class="home-page"> 
+<body class="home-page">
+
+  <!-- Navbar -->
   <nav class="navbar">
-  <ul>
-    <li><a href="homepage.html" class="active">Home</a></li>
-    <li><a href="photopage.html">Photos</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
-
-  <section class="name">
-    <h1>Shaya Udoff</h1>
-    <br>
-    <p class="subtitle">
-      Founder And CEO of Udoff Web Development
-    </p>
-  </section>
-
-  <!-- About Me Section -->
-  <section class="about-me">
-    <div class="about-me-box">
-      <h2>A little about me</h2>
-      <p>I was born and raised in Rockland County, NY, and spend much of the year down in Ocean County, NJ,
-         where I study in and build character at Yeshiva. Beyond that, I’m passionate about exploring new places,
-         meeting different kinds of people, and diving into adventure and action — whether it’s traveling,
-         mountain biking the trails in Sedona, AZ, or just trying something new.
-         I’ve always been curious and eager to learn, especially when it comes to technology, business, and innovation. I’m fascinated by the stock market and entrepreneurship,
-         and I’m currently working toward my degree in Business Science.
-         <br>This site is still just getting started, but over time, it’ll grow into a space that reflects what I’m about — energy, curiosity, and a drive to keep moving forward.
-         <br>— ChatGPT
-         <br><i><font size="small">Created for fun, inspiration, and for curing boredom.</font></i></p>
+    <div class="navbar-inner">
+      <div class="brand">Shaya Udoff</div>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="photopage.html">Photos</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="mobile-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
     </div>
-  </section>
+  </nav>
 
-    <!-- Buttons / Social Media -->
-    <section class="social-media">
-  <div class="social-media-box">
-    <h4>Social Media</h4>
-    <div class="social-icons-collage">
-      <!-- Popular social media icons -->
-      <a href="https://www.x.com/Shaya_udoff" target="_blank" class="icon x"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X"></a>
-      <a href="https://www.instagram.com/shya_udf" target="_blank" class="icon instagram"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
-      <a href="https://strava.app.link/nRVRVOc9xXb" target="_blank" class="icon strava"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/strava.svg" alt="Strava"></a>
-      <a href="https://www.facebook.com/shaya_udoff" target="_blank" class="icon facebook"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook"></a>
-      <a href="#" target="_blank" class="icon youtube"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"></a>
-      <a href="#" target="_blank" class="icon tiktok"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok"></a>
-      <a href="#" target="_blank" class="icon snapchat"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/snapchat.svg" alt="Snapchat"></a>
-      <a href="contact.html" class="icon whatsapp"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"></a>
-    </div>
+  <!-- Side panel for mobile -->
+  <div class="side-panel" id="sidePanel">
+    <button class="close-btn" id="closePanel">&times;</button>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="photopage.html">Photos</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
   </div>
-</section>
 
-<!-- Footer -->
+  <!-- Main Content -->
+  <div class="page-content">
+    <section class="name">
+      <h1>Shaya Udoff</h1>
+      <p class="subtitle">Founder & CEO of Udoff Web Development</p>
+    </section>
+
+    <!-- About Me -->
+    <section class="about-me">
+      <div class="about-me-box">
+        <h2>A Little About Me</h2>
+        <div class="about-text-box">
+          <p>
+            I was born and raised in Rockland County, NY, and spend much of the year down in Ocean County, NJ,
+            where I study and build character at Yeshiva. Beyond that, I’m passionate about exploring new places,
+            meeting different kinds of people, and diving into adventure — whether it’s traveling,
+            mountain biking the trails in Sedona, AZ, or trying something new.
+          </p>
+          <p>
+            I’ve always been curious and eager to learn, especially about technology, business, and innovation.
+            I’m fascinated by the stock market and entrepreneurship, and I’m currently working toward a degree in Business Science.
+          </p>
+          <p>
+            This site is just getting started, but over time, it’ll grow into a space that reflects what I’m about — energy, curiosity, and a drive to keep moving forward.
+          </p>
+          <p><i><font size="small">Created for fun, inspiration, and for curing boredom.</font></i></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Media -->
+    <section class="social-media">
+      <div class="social-media-box">
+        <h4>Follow Me</h4>
+        <div class="social-icons-collage">
+          <a href="https://www.x.com/Shaya_udoff" target="_blank" class="icon x"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X"></a>
+          <a href="https://www.instagram.com/shya_udf" target="_blank" class="icon instagram"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
+          <a href="https://strava.app.link/nRVRVOc9xXb" target="_blank" class="icon strava"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/strava.svg" alt="Strava"></a>
+          <a href="https://www.facebook.com/shaya_udoff" target="_blank" class="icon facebook"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook"></a>
+          <a href="#" target="_blank" class="icon youtube"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"></a>
+          <a href="#" target="_blank" class="icon tiktok"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok"></a>
+          <a href="#" target="_blank" class="icon snapchat"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/snapchat.svg" alt="Snapchat"></a>
+          <a href="contact.html" class="icon whatsapp"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"></a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
   <footer>
-  <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
-  <span class="rights-part"><i>all rights reserved</i></span>
-</footer>
+    <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
+    <span class="rights-part"><i>All rights reserved</i></span>
+  </footer>
 
+  <!-- Mobile toggle script -->
+  <script>
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const sidePanel = document.getElementById('sidePanel');
+    const closePanel = document.getElementById('closePanel');
+
+    mobileToggle.addEventListener('click', () => {
+      sidePanel.classList.add('open');
+    });
+
+    closePanel.addEventListener('click', () => {
+      sidePanel.classList.remove('open');
+    });
+  </script>
 </body>
 </html>

@@ -9,86 +9,113 @@
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body class="contact-page">
-<nav class="navbar">
-  <ul>
-    <li><a href="homepage.html">Home</a></li>
-    <li><a href="photopage.html">Photos</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="active">Contact</a></li>
-  </ul>
-</nav>
-<div class="contact-header">
-  <h2>Contact Me</h2>
-  <p>For inquiries, Shidduch ideas or investment opportunities, please reach out using the form below:</p>
-</div>
-  <form id="contact-form">
-    <h2>Contact Me</h2>
-    
-    <label for="firstName">First Name</label>
-    <input type="text" id="firstName" name="firstName" required />
 
-    <label for="lastName">Last Name</label>
-    <input type="text" id="lastName" name="lastName" required />
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="brand">Shaya Udoff</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="photopage.html">Photos</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="mobile-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required />
-
-    <label for="phone">Phone</label>
-    <input type="tel" id="phone" name="phone" />
-
-    <label for="reason">Reason for Reaching Out</label>
-    <textarea id="reason" name="reason" rows="5" required></textarea>
-
-    <button type="submit">Send</button>
-  </form>
-
-  <div class="whatsapp" style="display: flex; justify-content: center; margin-top: 1.5em;">
-    <a href="https://wa.me/18452760867" target="_blank">
-      <iconify-icon icon="mdi:whatsapp" style="font-size: 1.5em; vertical-align: middle;"></iconify-icon>
-      Message me on WhatsApp
-    </a>
+  <!-- Mobile side panel -->
+  <div class="side-panel" id="sidePanel">
+    <button class="close-btn" id="closePanel">&times;</button>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="photopage.html">Photos</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
   </div>
-<!-- Footer -->
-  <footer>
-  <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
-  <span class="rights-part"><i>all rights reserved</i></span>
-</footer>
-<script>
-  let lastScrollTop = 0;
-  const navbar = document.querySelector('.navbar');
 
-  window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  <!-- Page Content -->
+  <div class="page-content">
+    <section class="contact-header card">
+      <h2>Contact Me</h2>
+      <p>For inquiries, Shidduch ideas, or investment opportunities, please reach out using the form below:</p>
+    </section>
 
-    if(scrollTop > lastScrollTop){
-      // Scrolling down
-      navbar.style.top = "-60px";
-    } else {
-      // Scrolling up
-      navbar.style.top = "0";
-    }
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-  }, false);
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-  // Initialize EmailJS with your public key
-  emailjs.init("vaKSM9weRLDJcMVac");
+    <form id="contact-form" class="card">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" required />
 
-  const form = document.getElementById('contact-form');
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    emailjs.sendForm("service_xccl9pp", "template_hk6j6tb", this)
-      .then(function(response) {
-        console.log('EmailJS sendForm success:', response);
-        alert('✅ Your message has been sent! I will get back to you soon.');
-        form.reset();
-      }, function(error) {
-        console.error('EmailJS sendForm error:', error);
-        alert('⚠️ Something went wrong. Please try again later.');
-      });
-  });
-</script>
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" />
+
+      <label for="reason">Reason for Reaching Out</label>
+      <textarea id="reason" name="reason" rows="5" required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+
+    <div class="whatsapp card">
+      <a href="https://wa.me/18452760867" target="_blank">
+        <iconify-icon icon="mdi:whatsapp" style="font-size: 1.5em; vertical-align: middle;"></iconify-icon>
+        Message me on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="card">
+    <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
+    <span class="rights-part"><i>All rights reserved</i></span>
+  </footer>
+
+  <!-- Mobile toggle script -->
+  <script>
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const sidePanel = document.getElementById('sidePanel');
+    const closePanel = document.getElementById('closePanel');
+
+    mobileToggle.addEventListener('click', () => {
+      sidePanel.classList.add('open');
+    });
+
+    closePanel.addEventListener('click', () => {
+      sidePanel.classList.remove('open');
+    });
+  </script>
+
+  <!-- EmailJS script -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init("vaKSM9weRLDJcMVac");
+
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      emailjs.sendForm("service_xccl9pp", "template_hk6j6tb", this)
+        .then(function(response) {
+          console.log('EmailJS sendForm success:', response);
+          alert('✅ Your message has been sent! I will get back to you soon.');
+          form.reset();
+        }, function(error) {
+          console.error('EmailJS sendForm error:', error);
+          alert('⚠️ Something went wrong. Please try again later.');
+        });
+    });
+  </script>
 </body>
 </html>
