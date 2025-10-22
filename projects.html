@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3PED6JPPC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3PED6JPPC');
+</script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Under Construction</title>
@@ -9,19 +19,36 @@
 </head>
 <body class="project-page"> 
 <nav class="navbar">
-  <div class="menu-toggle" id="mobile-menu">
-    <span></span>
-    <span></span>
-    <span></span>
+  <div class="navbar-inner">
+    <div class="brand">Shaya Udoff</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="photopage.html">Photos</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
   </div>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="photopage.html">Photos</a></li>
-    <li><a href="projects.html" class="active">Projects</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
 </nav>
+
+<!-- Mobile side panel -->
+<div class="side-panel" id="sidePanel">
+  <button class="close-btn" id="closePanel">&times;</button>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="photopage.html">Photos</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</div>
 
 <div class="road-block">🚧
 </div>
@@ -42,21 +69,17 @@
 </footer>
 
 <script>
-  let lastScrollTop = 0;
-  const navbar = document.querySelector('.navbar');
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const sidePanel = document.getElementById('sidePanel');
+  const closePanel = document.getElementById('closePanel');
 
-  window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  mobileToggle.addEventListener('click', () => {
+    sidePanel.classList.add('open');
+  });
 
-    if(scrollTop > lastScrollTop){
-      // Scrolling down
-      navbar.style.top = "-60px";
-    } else {
-      // Scrolling up
-      navbar.style.top = "0";
-    }
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-  }, false);
+  closePanel.addEventListener('click', () => {
+    sidePanel.classList.remove('open');
+  });
 </script>
 </body>
 </html>
