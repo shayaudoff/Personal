@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3PED6JPPC"></script>
@@ -11,10 +11,111 @@
   gtag('config', 'G-W3PED6JPPC');
 </script>
 
-  <meta http-equiv="refresh" content="0; url=homepage.html">
-  <title>Redirecting...</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shaya Udoff</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 </head>
-<body>
-  <p>If you are not redirected automatically, <a href="homepage.html">click here</a>.</p>
+<body class="home-page">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="brand">Shaya Udoff</div>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="photopage.html">Photos</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="mobile-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Side panel for mobile -->
+  <div class="side-panel" id="sidePanel">
+    <button class="close-btn" id="closePanel">&times;</button>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="photopage.html">Photos</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="page-content">
+    <section class="name">
+      <h1>Shaya Udoff</h1>
+      <p class="subtitle">Founder & CEO of Udoff Web Development</p>
+    </section>
+
+    <!-- About Me -->
+    <section class="about-me">
+      <div class="about-me-box">
+        <h2>A Little About Me</h2>
+        <div class="about-text-box">
+          <p>
+            I was born and raised in Rockland County, NY, and spend much of the year down in Ocean County, NJ,
+            where I study and build character at Yeshiva. Beyond that, I’m passionate about exploring new places,
+            meeting different kinds of people, and diving into adventure — whether it’s traveling,
+            mountain biking the trails in Sedona, AZ, or trying something new.
+          </p>
+          <p>
+            I’ve always been curious and eager to learn, especially about technology, business, and innovation.
+            I’m fascinated by the stock market and entrepreneurship, and I’m currently working toward a degree in Business Science.
+          </p>
+          <p>
+            This site is just getting started, but over time, it’ll grow into a space that reflects what I’m about — energy, curiosity, and a drive to keep moving forward.
+          </p>
+          <p><i><font size="small">Created for fun, inspiration, and for curing boredom.</font></i></p>
+        </div>
+      </div>
+    </section>
+
+     <!-- Social Media -->
+  <section class="social-media">
+    <div class="social-media-box">
+      <h4>Follow Me</h4>
+      <div class="social-icons">
+        <a href="#" style="--color: #1877F2;"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" style="--color: #C13584;"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" style="--color: #4de8f4;"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" style="--color: #25d366;"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" style="--color: #000000;"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
+    <span class="rights-part"><i>All rights reserved</i></span>
+  </footer>
+
+  <!-- Mobile toggle script -->
+  <script>
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const sidePanel = document.getElementById('sidePanel');
+    const closePanel = document.getElementById('closePanel');
+
+    mobileToggle.addEventListener('click', () => {
+      sidePanel.classList.add('open');
+    });
+
+    closePanel.addEventListener('click', () => {
+      sidePanel.classList.remove('open');
+    });
+  </script>
 </body>
 </html>
