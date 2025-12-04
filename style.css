@@ -133,6 +133,44 @@ body{
   }
 }
 
+/* --- FIX MOBILE NAVBAR INTERACTION --- */
+
+/* Ensure the hamburger button is visible and clickable */
+.mobile-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  cursor: pointer;
+  z-index: 2000;
+  pointer-events: auto;
+}
+
+.mobile-toggle .bar {
+  height: 3px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Ensure side panel sits on top of all content when open */
+.side-panel {
+  z-index: 1900 !important;
+}
+
+/* When open, allow full interaction */
+.side-panel.open {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* When closed, prevent accidental clicks */
+.side-panel:not(.open) {
+  pointer-events: none;
+}
+
 /* slide-in side panel */
 .side-panel{
   position:fixed;top:0;left:0;height:100vh;width:320px;max-width:85vw;
@@ -195,9 +233,8 @@ body{
 }
 
 .about-me-box:hover {
-  transform: scaleX(1.02);
-}
-
+  transform: }
+  
 .about-me-box,
 .name {
   margin: 18px auto;
@@ -289,7 +326,6 @@ footer {
 /* Accessibility helpers */
 .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
 
-/* End of stylesheet */
 /* Social media box - new style */
 /* Social media box - updated style */
 .social-media-box {
@@ -641,43 +677,7 @@ footer {
     font-size: 4rem;
   }
 }
-/* --- FIX MOBILE NAVBAR INTERACTION --- */
 
-/* Ensure the hamburger button is visible and clickable */
-.mobile-toggle {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 26px;
-  height: 18px;
-  cursor: pointer;
-  z-index: 2000;
-  pointer-events: auto;
-}
-
-.mobile-toggle .bar {
-  height: 3px;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* Ensure side panel sits on top of all content when open */
-.side-panel {
-  z-index: 1900 !important;
-}
-
-/* When open, allow full interaction */
-.side-panel.open {
-  transform: translateX(0);
-  pointer-events: auto;
-}
-
-/* When closed, prevent accidental clicks */
-.side-panel:not(.open) {
-  pointer-events: none;
-}
 /* --- NAVBAR BRAND + MOBILE VISIBILITY FIX --- */
 
 /* Hide brand text completely */
@@ -722,3 +722,5 @@ footer {
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
   }
 }
+
+/* End of stylesheet */
