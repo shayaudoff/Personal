@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3PED6JPPC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3PED6JPPC');
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact</title>
+    <link rel="stylesheet" href="/style.css" />
+    <!-- Iconify Icon Script -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</head>
+<body class="contact-page">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="brand">Shaya Udoff</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="photopage.html">Photos</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="mobile-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile side panel -->
+  <div class="side-panel" id="sidePanel">
+    <button class="close-btn" id="closePanel">&times;</button>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="photopage.html">Photos</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Page Content -->
+  <div class="quotes-header-container">
+    <h2>Quotes for Wisdom and Inspiration</h2>
+    <h5>If one inspires you, hit that copy button and inspire others</h5>
+  </div>
+
+  <!-- Example Quote Card -->
+  <div class="quote-card">
+    <span class="quote-text">It is not what we do, but also what we do not do, for which we are accountable.</span>
+    <span class="quote-author">– Maimonides</span>
+    <button class="copy-btn" onclick="copyQuote(this)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </button>
+  </div>
+  
+  <div class="quote-card">
+    <span class="quote-text">You can not teach a man anything, you can only help him to find it within himself.</span>
+    <span class="quote-author">– Galileo</span>
+    <button class="copy-btn" onclick="copyQuote(this)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </button>
+  </div>
+
+<script>
+function copyQuote(btn) {
+  const quoteCard = btn.closest('.quote-card');
+  const text = quoteCard.querySelector('.quote-text').innerText + " " + quoteCard.querySelector('.quote-author').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    alert("Quote copied to clipboard!");
+  });
+}
+
+function downloadQuote(btn) {
+  const quoteCard = btn.closest('.quote-card');
+  const text = quoteCard.querySelector('.quote-text').innerText + "\n" + quoteCard.querySelector('.quote-author').innerText;
+  const blob = new Blob([text], {type: "text/plain"});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = "quote.txt";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
+<!-- Footer -->
+  <footer class="card">
+    <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
+    <span class="rights-part"><i>All rights reserved</i></span>
+  </footer>
+
+  <!-- Mobile toggle script -->
+  <script>
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const sidePanel = document.getElementById('sidePanel');
+    const closePanel = document.getElementById('closePanel');
+
+    mobileToggle.addEventListener('click', () => {
+      sidePanel.classList.add('open');
+    });
+
+    closePanel.addEventListener('click', () => {
+      sidePanel.classList.remove('open');
+    });
+  </script>
+</body>
+</html>

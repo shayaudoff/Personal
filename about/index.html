@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3PED6JPPC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3PED6JPPC');
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>About Me</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="about-page">
+
+  <!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="brand">Shaya Udoff</div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/photopage/">Photos</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/about/" class="active">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <div class="mobile-toggle">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile side panel -->
+<div class="side-panel" id="sidePanel">
+  <button class="close-btn" id="closePanel">×</button>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/photopage/">Photos</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/about/" class="active">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+
+  <!-- Page Content -->
+  <div class="page-content">
+    <section class="about-me card">
+      <h2>About Me</h2>
+      <p>
+        Hi 👋🏽, my name is Shaya Udoff, and let me introduce myself.<br><br>
+
+        As Confucius is often quoted to have said:<br>
+        <i>"Choose a job you love, and you never have to work a day in your life"</i><br><br>
+
+        So with that in mind, I believe entrepreneurship is more than just a career path for me — it's a hobby.<br><br>
+
+        I’ve built multiple ventures from the ground up, including Glisten Glass Art, where I serve as CEO, turning creativity into a business that combines artistry and strategy.<br><br>
+
+        At UB Constructs, as co-founder and CFO, I manage finances and operations, learning how to balance risk and opportunity in real-time.<br><br>
+
+        I also help develop projects at Insiyt as CTO, applying technology and innovation to bring ideas to life.<br><br>
+
+        In addition to my ventures, I actively trade IPOs on Robinhood, exploring the financial markets and understanding how to grow wealth intelligently.<br><br>
+
+        I see every project—whether a startup, an investment, or a new skill—as a chance to challenge myself, learn, and improve.<br><br>
+
+        Studying Business Science allows me to deepen my knowledge of marketing, strategy, and leadership, giving me the tools to take my ideas further and make them sustainable.<br><br>
+
+        I thrive on new challenges and experiences, whether that’s traveling to new places, mountain biking the trails, or hitting the water for wakeboarding and wakesurfing.<br><br>
+
+        My goal is to combine creativity, discipline, and strategic thinking to build ventures that are both successful and meaningful.<br><br>
+
+        Everything I do is part of a larger mission: to learn, grow, and create opportunities that push me forward while inspiring others around me.
+      </p>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="card">
+    <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
+    <span class="rights-part"><i>All rights reserved</i></span>
+  </footer>
+
+  <!-- Mobile toggle script -->
+  <script>
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const sidePanel = document.getElementById('sidePanel');
+    const closePanel = document.getElementById('closePanel');
+
+    mobileToggle.addEventListener('click', () => {
+      sidePanel.classList.add('open');
+    });
+
+    closePanel.addEventListener('click', () => {
+      sidePanel.classList.remove('open');
+    });
+  </script>
+</body>
+</html>

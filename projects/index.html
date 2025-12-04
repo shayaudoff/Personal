@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3PED6JPPC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3PED6JPPC');
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Under Construction</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="project-page"> 
+
+    <!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="brand">Shaya Udoff</div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/photopage/">Photos</a></li>
+      <li><a href="/projects/" class="active">Projects</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <div class="mobile-toggle">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile side panel -->
+<div class="side-panel" id="sidePanel">
+  <button class="close-btn" id="closePanel">×</button>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/photopage/">Photos</a></li>
+      <li><a href="/projects/" class="active">Projects</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="road-block">🚧
+</div>
+<div class="projects-container">
+  <div class="under-construction">
+    <h2>Projects Under Construction</h2>
+    <p>We are building something amazing! Check back later.</p><br>
+    <a href="quotes.html" class="quotes-link">Click here for some wisdom</a>
+</div>
+</div>
+
+  
+
+<!-- Footer ------------------------------------------------------------->
+<footer>
+  <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
+  <span class="rights-part"><i>all rights reserved</i></span>
+</footer>
+
+<script>
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const sidePanel = document.getElementById('sidePanel');
+  const closePanel = document.getElementById('closePanel');
+
+  mobileToggle.addEventListener('click', () => {
+    sidePanel.classList.add('open');
+  });
+
+  closePanel.addEventListener('click', () => {
+    sidePanel.classList.remove('open');
+  });
+</script>
+</body>
+</html>
