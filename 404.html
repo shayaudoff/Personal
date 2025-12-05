@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 – Houston, we have a problem · Shaya Udoff</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .error-container { text-align:center; padding:60px 20px; min-height:70vh; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+    .error-code { font-size:140px; font-weight:900; margin:0; color:#0d6e7a; text-shadow:4px 4px 0 #000; }
+    .error-message { font-size:28px; margin:20px 0; }
+    .fun-fact { font-size:19px; max-width:700px; margin:40px auto; padding:20px; background:rgba(255,255,255,0.05); border-radius:12px; font-style:italic; }
+    .go-home { display:inline-block; margin-top:30px; padding:14px 32px; background:#226473; color:white; border-radius:50px; text-decoration:none; font-weight:bold; transition:0.3s; }
+    .go-home:hover { background:#5189c1; transform:scale(1.05); }
+    @media (max-width:600px) { .error-code { font-size:100px; } }
+  </style>
+</head>
+<body class="error-page">
+
+  <!-- Navbar (same as everywhere) -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="brand">Shaya Udoff</div>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/photopage/">Photos</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+      <div class="mobile-toggle">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 404 Magic -->
+  <div class="error-container">
+    <h1 class="error-code">404</h1>
+    <p class="error-message">Oops! This page took a wrong turn in the internet tubes.</p>
+
+    <div class="fun-fact" id="funFact">
+      Loading a random computer fact…
+    </div>
+
+    <a href="/" class="go-home">← Take Me Home</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <span class="copyright-part">© 2025 Udoff Web Development</span>
+    <span class="rights-part"><i>All rights reserved</i></span>
+  </footer>
+
+  <!-- Random fun facts script -->
+  <script>
+    const facts = [
+      "The first actual computer 'bug' was a dead moth stuck in a Harvard Mark II in 1947. Grace Hopper taped it into the log book — and debugging was born.",
+      "The first website ever (1991) is still online: http://info.cern.ch",
+      "The QWERTY keyboard layout was designed in the 1870s to stop typewriter keys from jamming.",
+      "In 1971, the first email was sent by Ray Tomlinson. The message? Something like 'QWERTYUIOP'.",
+      "The first 1GB hard drive (IBM 3380, 1980) weighed over 550 pounds and cost $40,000.",
+      "Over 6,000 new computer viruses are created every month.",
+      "The password for the U.S. nuclear missile launch codes was literally '00000000' for almost 20 years.",
+      "The first Apple computer (1976) was sold for $666.66 because Steve Wozniak liked repeating digits.",
+      "CAPTCHA stands for 'Completely Automated Public Turing test to tell Computers and Humans Apart'.",
+      "Every minute, 500 hours of video are uploaded to YouTube. Your 404 is just a tiny blip.",
+      "There are about 1.8 billion websites. Only about 200 million are actually active. You just found one of the other 1.6 billion.",
+      "In 1999, people were selling 1GB hard drives on eBay for $9,999. Adjusted for inflation, that’s a bargain.",
+      "The first banner ad ever (1994) said: 'Have you ever clicked your mouse right HERE?' People did. 44% click-through rate.",
+      "Your 404 page is now smarter than 90% of the internet in 2005."
+    ];
+
+    const factElement = document.getElementById("funFact");
+    const randomFact = facts[Math.floor(Math.random() * facts.length)];
+    factElement.textContent = randomFact;
+  </script>
+
+</body>
+</html>
