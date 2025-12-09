@@ -720,4 +720,195 @@ footer {
   }
 }
 
+/* ============================
+   ENTRY PAGE STYLING
+   ============================ */
+
+.entry-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('img/AZ_sunset.jpeg') center/cover no-repeat fixed;
+}
+
+.entry-container {
+  text-align: center;
+  padding: 40px 30px;
+  border-radius: 18px;
+  max-width: 500px;
+  width: 90%;
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+  animation: fadeInEntry 0.6s ease-out;
+}
+
+.entry-container h1 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.entry-container p {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.enter-site-btn {
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.enter-site-btn:hover {
+  background: rgba(0,0,0,0.9);
+  transform: translateY(-2px);
+}
+
+.view-disclaimer-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: rgba(0,0,0,0.75);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.view-disclaimer-btn:hover {
+  opacity: 0.6;
+  background: none;
+  transform: none;
+}
+
+@keyframes fadeInEntry {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================
+   ENTRY PAGE + DISCLAIMER ANIMATION
+   ============================ */
+
+.entry-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('img/AZ_sunset.jpeg') center/cover no-repeat fixed;
+  overflow: hidden;
+}
+
+/* Welcome box */
+.entry-container {
+  text-align: center;
+  padding: 40px 30px;
+  border-radius: 18px;
+  max-width: 500px;
+  width: 90%;
+  backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+  animation: fadeInEntry 0.6s ease-out;
+  transition: transform 0.5s ease;
+  margin-top: -100px;
+}
+
+.entry-container.shift-up {
+  transform: translateY(-180px);
+}
+
+/* Buttons */
+.enter-site-btn {
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+  margin-top: 14px;
+}
+
+.enter-site-btn:hover {
+  background: rgba(0,0,0,0.9);
+  transform: translateY(-2px);
+}
+
+
+/* Disclaimer box */
+.disclaimer-container {
+  position: absolute;
+  bottom: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(600px, 90%);
+  padding: 32px 26px;
+  text-align: center;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 18px;
+  box-shadow: 0 10px 34px rgba(0,0,0,0.3);
+  backdrop-filter: blur(16px);
+  transition: bottom 0.55s ease;
+}
+
+.disclaimer-container.show {
+  bottom: 40px;
+}
+
+/* Disclaimer Buttons */
+.close-disclaimer-btn {
+  margin-top: 18px;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.close-disclaimer-btn:hover {
+  background: rgba(0,0,0,0.6);
+  transform: translateY(-1px);
+}
+
+/* Fade animation */
+@keyframes fadeInEntry {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.small-enter-btn {
+  margin-top: 12px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.small-enter-btn:hover {
+  background: rgba(0,0,0,0.9);
+  transform: translateY(-2px);
+}
+
+
 /* End of stylesheet */

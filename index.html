@@ -1,119 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3PED6JPPC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome | Shaya Udoff</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
 
-  gtag('config', 'G-W3PED6JPPC');
+<body class="entry-page">
+
+  <!-- WELCOME BOX -->
+  <div class="entry-container" id="welcomeBox">
+    <h1>Welcome to Shaya Udoff’s Website</h1>
+    <p>By pressing enter you agree to the <button class="view-disclaimer-btn" onclick="showDisclaimer(false)">
+      terms and conditions
+    </button>
+      <br>and have read the disclaimer.</p>
+
+    <button class="enter-site-btn" onclick="showDisclaimer(true)">
+      Enter
+    </button>
+  </div>
+
+  <!-- DISCLAIMER BOX -->
+  <div class="disclaimer-container" id="disclaimerBox">
+    <h2>Disclaimer</h2>
+    <p>
+      By pressing Enter, I agree that this website may contain opinions,
+       personal content, or material intended for expression. 
+       Entering means I understand the site is provided as‑is 
+       with no warranties.
+    </p>
+
+    <button class="close-disclaimer-btn" onclick="hideDisclaimer()">
+      Close
+    </button>
+  </div>
+
+<script>
+ function showDisclaimer(autoEnter) {
+  if (autoEnter) {
+    window.location.href = "/home/";
+    return;
+  }
+
+  document.getElementById("welcomeBox").classList.add("shift-up");
+  document.getElementById("disclaimerBox").classList.add("show");
+}
+
+  function hideDisclaimer() {
+    document.getElementById("welcomeBox").classList.remove("shift-up");
+   document.getElementById("disclaimerBox").classList.remove("show"); 
+  }
 </script>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shaya Udoff</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
-</head>
-<body class="home-page">
-
-  <!-- Navbar -->
-<nav class="navbar">
-  <div class="navbar-inner">
-    <div class="brand">Shaya Udoff</div>
-    <ul>
-      <li><a href="/" class="active">Home</a></li>
-      <li><a href="/photopage/">Photos</a></li>
-      <li><a href="/projects/">Projects</a></li>
-      <li><a href="/about/">About</a></li>
-      <li><a href="/contact/">Contact</a></li>
-    </ul>
-    <div class="mobile-toggle">
-      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-    </div>
-  </div>
-</nav>
-
-<!-- Mobile side panel -->
-<div class="side-panel" id="sidePanel">
-  <button class="close-btn" id="closePanel">×</button>
-  <nav>
-    <ul>
-      <li><a href="/" class="active">Home</a></li>
-      <li><a href="/photopage/">Photos</a></li>
-      <li><a href="/projects/">Projects</a></li>
-      <li><a href="/about/">About</a></li>
-      <li><a href="/contact/">Contact</a></li>
-    </ul>
-  </nav>
-</div>
-
-  <!-- Main Content -->
-  <div class="page-content">
-    <section class="name">
-      <h1>Shaya Udoff</h1>
-      <p class="subtitle">Founder & CEO of Udoff Web Development</p>
-    </section>
-
-    <!-- About Me -->
-    <section class="about-me">
-      <div class="about-me-box">
-        <h2>A Little About Me</h2>
-        <div class="about-text-box">
-          <p>
-            I was born and raised in Rockland County, NY, and spend much of the year down in Ocean County, NJ,
-            where I study and build character at Yeshiva. Beyond that, I’m passionate about exploring new places,
-            meeting different kinds of people, and diving into adventure — whether it’s traveling,
-            mountain biking the trails in Sedona, AZ, or trying something new.
-          </p>
-          <p>
-            I’ve always been curious and eager to learn, especially about technology, business, and innovation.
-            I’m fascinated by the stock market and entrepreneurship, and I’m currently working toward a degree in Business Science.
-          </p>
-          <p>
-            This site is just getting started, but over time, it’ll grow into a space that reflects what I’m about — energy, curiosity, and a drive to keep moving forward.
-          </p>
-          <p><i><font size="small">Created for fun, inspiration, and for curing boredom.</font></i></p>
-        </div>
-      </div>
-    </section>
-
-     <!-- Social Media -->
-  <section class="social-media">
-    <div class="social-media-box">
-      <h4>Follow Me</h4>
-      <div class="social-icons">
-        <a href="https://www.facebook.com/shya_udf/" style="--color: #1877F2;"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.instagram.com/shaya_udoff/" style="--color: #C13584;"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/shya_udf" style="--color: #4de8f4;"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="https://wa.me/18452760867" target="_blank" rel="noopener noreferrer" style="--color: #25d366;"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://www.twitter.com/shya_udf" style="--color: #000000;"><i class="fa-brands fa-x-twitter"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
-    <span class="rights-part"><i>All rights reserved</i></span>
-  </footer>
-
-  <!-- Mobile toggle script -->
-  <script>
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const sidePanel = document.getElementById('sidePanel');
-    const closePanel = document.getElementById('closePanel');
-
-    mobileToggle.addEventListener('click', () => {
-      sidePanel.classList.add('open');
-    });
-
-    closePanel.addEventListener('click', () => {
-      sidePanel.classList.remove('open');
-    });
-  </script>
 </body>
 </html>
