@@ -22,36 +22,72 @@
     </button>
   </div>
 
+  <div class="disclaimer-overlay" id="disclaimerOverlay"></div>
   <!-- DISCLAIMER BOX -->
   <div class="disclaimer-container" id="disclaimerBox">
-    <h2>Disclaimer</h2>
-    <p>
-      By pressing Enter, I agree that this website may contain opinions,
-       personal content, or material intended for expression. 
-       Entering means I understand the site is provided as‑is 
-       with no warranties.
-    </p>
+    <div class="disclaimer-sheet">
+      <div class="sheet-handle"></div>
 
-    <button class="close-disclaimer-btn" onclick="hideDisclaimer()">
-      Close
-    </button>
+      <h2>Disclaimer</h2>
+
+      <p>
+        By continuing, you agree to the following.<br>
+        Don’t worry — I’ve got everything under control.<br><br>
+
+        • Yeah, I collect data.<br>
+        Calm down — I just like knowing who’s repeatedly refreshing the page like they’re waiting for classified updates.<br>
+        It’s impressive.<br>
+        Slightly concerning.<br>
+        But impressive.<br><br>
+
+        • I’m aware of your device stats.<br>
+        Your battery percentage? Not great.<br>
+        Your WiFi name? Questionable.<br>
+        Your tab count? Bold.<br>
+        I respect the chaos — but I still judge it.<br><br>
+
+        • This site runs exactly how I built it: intentionally, efficiently, and occasionally with attitude.<br>
+        If something glitches, that’s your setup arguing with mine.<br>
+        Mine usually wins.<br><br>
+
+        • Pressing Enter means you’re responsible for whatever follows.<br>
+        Inspiration, regret, motivation, confusion — all of it.<br>
+        I just provide the door — you’re the one walking through it.<br><br>
+
+        • Cookies may be used.<br>
+        Digital ones, mostly.<br>
+        Real ones if I take a break.<br>
+        If any disappear, I’m assuming you did it.<br><br>
+
+        By hitting enter, you agree that I may or may not monitor… stuff. Nothing creepy. Just… technical vibes.<br>
+        You also accept that if anything glitches, crashes, or explodes digitally, I plead the fifth.<br>
+        Cookies might be used. Browser ones. Real ones. Maybe encrypted ones I made for fun.<br>
+        And look, if you’re still reading this, you’re either brave or nosy — either way, you’re in.<br><br>
+
+        Good luck.<br>
+        Press Enter — I’ve already got the rest handled.
+      </p>
+
+      <button class="close-disclaimer-btn" onclick="hideDisclaimer()">Close</button>
+    </div>
   </div>
 
 <script>
- function showDisclaimer(autoEnter) {
+function showDisclaimer(autoEnter) {
   if (autoEnter) {
     window.location.href = "/home/";
     return;
   }
 
   document.getElementById("welcomeBox").classList.add("shift-up");
+  document.getElementById("disclaimerOverlay").classList.add("show");
   document.getElementById("disclaimerBox").classList.add("show");
 }
-
-  function hideDisclaimer() {
-    document.getElementById("welcomeBox").classList.remove("shift-up");
-   document.getElementById("disclaimerBox").classList.remove("show"); 
-  }
+function hideDisclaimer() {
+  document.getElementById("welcomeBox").classList.remove("shift-up");
+  document.getElementById("disclaimerOverlay").classList.remove("show");
+  document.getElementById("disclaimerBox").classList.remove("show"); 
+}
 </script>
 
 </body>
