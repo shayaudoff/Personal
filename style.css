@@ -109,59 +109,40 @@ body{
 @media (max-width: 768px) {
   /* Hide default navbar, show only hamburger */
   .navbar {
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
     width: auto;
     background: transparent !important;
     box-shadow: none !important;
   }
+  .navbar-inner { display: none !important; }
 
   .navbar ul {
     display: none;
   }
 
 /* ─── ULTRA-HIGH TOP-RIGHT HAMBURGER (Apple-level positioning) ─── */
-/* Replace ONLY your current .mobile-toggle block with this */
 
 .mobile-toggle {
   position: fixed !important;
-  top: env(safe-area-inset-top, 8px);   /* Uses the notch/dynamic-island safe area */
-  top: calc(env(safe-area-inset-top, 8px) + 6px);  /* +6px = perfectly tucked under status bar */
-  right: 12px !important;
-  z-index: 2000;
-  width: 44px;
-  height: 44px;
+  left: calc(env(safe-area-inset-left) + 8px) !important;
+  top: calc(env(safe-area-inset-top) + 8px) !important;
+  z-index: 3000;
+  width: 46px;
+  height: 46px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.32);
+  background: rgba(255,255,255,0.32);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  .mobile-toggle {
-    background: rgba(0, 0, 0, 0.45);
-    border-color: rgba(255, 255, 255, 0.18);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  }
-}
-}
-
-/* Dark mode version of the button */
-@media (prefers-color-scheme: dark) {
-  .mobile-toggle {
-    background: rgba(0,0,0,0.4);
-    border-color: rgba(255,255,255,0.2);
-  }
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
 }
 
   /* Subtle background when pressed (like iOS buttons) */
@@ -812,24 +793,6 @@ footer {
   }
 }
 
-/* --- NAVBAR BRAND + MOBILE VISIBILITY FIX --- */
-
-/* Hide brand text completely */
-.navbar .brand {
-  display: none;
-}
-
-/* Show hamburger only on mobile screens */
-@media (min-width: 769px) {
-  .mobile-toggle {
-    display: none !important;
-  }
-}
-.road-block {
-  font-size: 8rem;
-  opacity: 1;
-  text-align: center;
-}
 
 .quotes-header-container {
   text-align: center;
