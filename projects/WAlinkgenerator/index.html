@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3PED6JPPC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-W3PED6JPPC');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WhatsApp Link Generator</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="about-page">
+
+<nav class="navbar">
+  <div class="mobile-toggle" id="mobileToggle">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>
+
+  <div class="navbar-inner">
+    <div class="brand">Shaya Udoff</div>
+    <ul>
+      <li><a href="/home/">Home</a></li>
+      <li><a href="/photopage/">Photos</a></li>
+      <li><a href="/projects/" class="active">Projects</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="side-panel" id="sidePanel">
+  <button class="close-btn" id="closePanel">×</button>
+  <nav>
+    <ul>
+      <li><a href="/home/">Home</a></li>
+      <li><a href="/photopage/">Photos</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/about/" class="active">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-content">
+
+  <div class="wapage-header">
+    <h2>WhatsApp Link Generator</h2>
+    <p>Get a WhatsApp link to start chatting.</p>
+  </div>
+
+  <div class="wa-generator">
+    <div class="wa-generator-container">
+      
+      <div class="phone-input">
+        <label for="phone">Phone Number (with country code)</label>
+        <input type="text" id="phone" class="wa-input" placeholder="e.g. 15551234567">
+      </div>
+
+      <div class="message-input">
+        <label for="message">Message</label>
+        <textarea id="message" class="wa-textarea" rows="4" placeholder="Type your message here..."></textarea>
+      </div>
+
+      <div class="generate-button">
+        <button id="generate" class="wa-button">Generate Link</button>
+        <button id="newLink" class="wa-button" style="display:none; margin-left:10px; background: #555;">New Link</button>
+      </div>
+
+      <div class="output wa-output" style="display:none;" id="outputContainer">
+        <input type="text" id="waLinkOutput" readonly>
+        <button id="copyLink">Copy</button>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+
+<script>
+
+  // Mobile Menu Logic
+  const mobileToggle = document.getElementById('mobileToggle');
+  const sidePanel = document.getElementById('sidePanel');
+  const closePanel = document.getElementById('closePanel');
+
+  function toggleMenu() {
+    const isOpen = sidePanel.classList.contains('open');
+    if (isOpen) {
+      sidePanel.classList.remove('open');
+      mobileToggle.classList.remove('open');
+    } else {
+      sidePanel.classList.add('open');
+      mobileToggle.classList.add('open');
+    }
+  }
+
+  mobileToggle.addEventListener('click', toggleMenu);
+  closePanel.addEventListener('click', toggleMenu);
+
+  // Close panel when clicking outside
+  document.addEventListener('click', (e) => {
+    if (sidePanel.classList.contains('open') && 
+        !sidePanel.contains(e.target) && 
+        !mobileToggle.contains(e.target)) {
+      toggleMenu();
+    }
+  });
+
+  // WhatsApp Generator Logic
+  document.getElementById('generate').addEventListener('click', function() {
+    let phone = document.getElementById('phone').value.trim();
+    const messageText = document.getElementById('message').value.trim();
+
+    if (!phone) {
+      alert('Please enter a phone number.');
+      return;
+    }
+
+    // Remove + if present
+    if (phone.startsWith('+')) {
+      phone = phone.slice(1);
+    }
+
+    // Basic validation
+    if (!/^\d{7,}$/.test(phone)) {
+      alert('Please enter a valid phone number (digits only, include country code).');
+      return;
+    }
+
+    const message = encodeURIComponent(messageText);
+    const waLink = `https://wa.me/${phone}?text=${message}`;
+
+    const linkOutput = document.getElementById('waLinkOutput');
+    const outputContainer = document.getElementById('outputContainer');
+    const newLinkBtn = document.getElementById('newLink');
+    const generateBtn = document.getElementById('generate');
+
+    linkOutput.value = waLink;
+    
+    // UI Updates
+    outputContainer.style.display = 'flex';
+    newLinkBtn.style.display = 'inline-block';
+    generateBtn.style.display = 'none'; // Hide generate button to clean up UI
+  });
+
+  document.getElementById('copyLink').addEventListener('click', function() {
+    const linkOutput = document.getElementById('waLinkOutput');
+    linkOutput.select();
+    linkOutput.setSelectionRange(0, 99999); // For mobile
+
+    navigator.clipboard.writeText(linkOutput.value).then(() => {
+      const originalText = this.textContent;
+      this.textContent = 'Copied!';
+      this.style.background = '#4cd964'; // iOS Success Green
+      setTimeout(() => {
+        this.textContent = originalText;
+        this.style.background = ''; // Revert to CSS default
+      }, 2000);
+    }).catch(() => {
+      alert('Failed to copy. Please manually copy the text box.');
+    });
+  });
+
+  document.getElementById('newLink').addEventListener('click', function() {
+    document.getElementById('phone').value = '';
+    document.getElementById('message').value = '';
+    
+    const outputContainer = document.getElementById('outputContainer');
+    outputContainer.style.display = 'none';
+    
+    this.style.display = 'none';
+    document.getElementById('generate').style.display = 'inline-block';
+  });
+</script>
+
+<footer>
+  <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
+  <span class="rights-part"><i>all rights reserved</i></span>
+</footer>
+
+</body>
+</html>
