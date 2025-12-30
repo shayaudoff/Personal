@@ -885,7 +885,34 @@ footer {
 }
 
 .enter-site-btn:hover {
-  background: rgba(0,0,0,0.9);
+   Trust / privacy micro-text */
+.wa-trust {
+  margin-top: 18px;
+  font-size: 0.75rem;
+  color: rgba(0,0,0,0.6);
+  line-height: 1.5;
+}
+
+.wa-trust span {
+  color: #128C7E;
+  font-weight: 700;
+}
+
+/* Mobile refinement */
+@media (max-width: 480px) {
+  .wa-generator {
+    padding: 30px 22px;
+    margin: 32px 16px;
+  }
+
+  .wa-output {
+    flex-direction: column;
+  }
+
+  .wa-output button {
+    width: 100%;
+  }
+}background: rgba(0,0,0,0.9);
   transform: translateY(-2px);
 }
 
@@ -1027,144 +1054,296 @@ footer {
 
 
 /* =========================
-   WhatsApp Link Generator
+   WhatsApp Generator (Glass Redesign)
    ========================= */
 
-.wa-generator {
-  padding: 36px 28px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.14); /* subtle glass effect */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+/* Main Container - Matches .about-me-box style */
+.wa-glass-card {
+  position: relative;
+  width: min(550px, 94%);
+  margin: 40px auto;
+  padding: 38px 32px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.14); /* Your vibe background */
+  border: 1px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  max-width: 420px;
-  margin: 40px auto;
-  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  color: var(--text);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  overflow: hidden; /* Keeps animations inside */
 }
 
-.wa-generator-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+/* Header Typography */
+.wa-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text, #000);
 }
 
-.wa-generator-container label {
-  font-weight: 600;
-  margin-bottom: 6px;
+.wa-header p {
+  font-size: 0.95rem;
+  color: var(--muted, rgba(0,0,0,0.6));
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+/* Input Fields - Matches #contact-form input style */
+.wa-form-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.wa-form-group label {
   display: block;
-  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  color: var(--text, #333);
+  opacity: 0.8;
 }
 
 .wa-input,
 .wa-textarea {
   width: 100%;
-  padding: 12px 14px;
+  padding: 14px 16px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text);
-  font-size: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04); /* Subtle recessed look */
+  color: var(--text, #000);
+  font-size: 1rem;
   font-family: inherit;
-  transition: all 0.3s ease;
-  outline: none;
-  resize: vertical;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
 }
 
 .wa-input:focus,
 .wa-textarea:focus {
-  border-color: #25D366;
-  box-shadow: 0 0 8px rgba(37, 211, 102, 0.3);
-  background: rgba(255, 255, 255, 0.15);
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #25D366; /* WhatsApp Green highlight */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06), 0 0 0 2px rgba(37, 211, 102, 0.2);
 }
 
 .wa-textarea {
   min-height: 100px;
+  resize: vertical;
 }
 
-.wa-button {
-  padding: 12px 20px;
+/* Primary Action Button */
+.wa-btn-primary {
+  width: 100%;
+  margin-top: 10px;
+  padding: 16px;
   border-radius: 12px;
   border: none;
-  background: #25D366;
+  background: linear-gradient(135deg, #25D366, #128C7E); /* Green Gradient */
   color: white;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.25s ease;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.wa-button:hover,
-.wa-button:focus {
-  background: #128C7E;
-  transform: translateY(-1px);
-  outline: none;
+.wa-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
 }
 
-.wa-output {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
+.wa-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Output Section (Hidden by default) */
+.wa-result-box {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  display: none; /* Toggled via JS */
+  flex-direction: column;
   gap: 12px;
+  animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.wa-output input {
-  flex-grow: 1;
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text);
-  font-size: 16px;
-  font-family: inherit;
-  transition: all 0.3s ease;
-  outline: none;
+.wa-result-actions {
+  display: flex;
+  gap: 10px;
 }
 
-.wa-output input:focus {
-  border-color: #25D366;
-  box-shadow: 0 0 8px rgba(37, 211, 102, 0.3);
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.wa-output button {
-  padding: 12px 20px;
+.wa-btn-secondary {
+  flex: 1;
+  padding: 14px;
   border-radius: 12px;
   border: none;
-  background: #25D366;
-  color: white;
-  font-size: 16px;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text, #000);
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s ease;
-  font-family: inherit;
+  transition: background 0.2s;
 }
 
-.wa-output button:hover,
-.wa-output button:focus {
-  background: #128C7E;
-  transform: translateY(-1px);
-  outline: none;
+.wa-btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive tweaks for small screens */
+/* Trust Badge */
+.wa-trust {
+  margin-top: 24px;
+  font-size: 0.75rem;
+  color: var(--muted, #666);
+  opacity: 0.7;
+}
+
+/* Animation */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Tweak */
 @media (max-width: 480px) {
-  .wa-generator {
-    padding: 28px 18px;
-    margin: 30px 16px;
+  .wa-glass-card {
+    padding: 28px 20px;
+    margin: 20px auto;
+  }
+}
+
+/* ============================
+   WA SEO / FAQ SECTION (UNDER CARD)
+   ============================ */
+
+/* Wrapper spacing */
+.wa-seo-section {
+  width: min(900px, 94%);
+  margin: 28px auto 60px;
+  text-align: center;
+}
+
+/* Toggle Button */
+.wa-seo-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.28);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  color: var(--text);
+  transition: all 0.25s ease;
+}
+
+.wa-seo-toggle-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.38);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+}
+
+/* Collapsible Container */
+.wa-seo-content {
+  margin-top: 22px;
+  padding: 32px 34px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.28);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 46px rgba(0,0,0,0.18);
+  text-align: left;
+
+  /* collapsed by default */
+  display: none;
+}
+
+/* When opened via JS */
+.wa-seo-content.show {
+  display: block;
+  animation: seoFadeIn 0.45s cubic-bezier(0.22,1,0.36,1);
+}
+
+/* Section headings */
+.wa-seo-content h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.wa-seo-content h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-top: 26px;
+  margin-bottom: 8px;
+}
+
+/* Paragraphs */
+.wa-seo-content p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+/* Lists */
+.wa-seo-content ul {
+  padding-left: 18px;
+  margin: 12px 0 18px;
+}
+
+.wa-seo-content li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* FAQ blocks */
+.wa-faq-item {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.wa-faq-item strong {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+/* Subtle disclaimer text */
+.wa-seo-disclaimer {
+  margin-top: 22px;
+  font-size: 0.75rem;
+  color: rgba(0,0,0,0.55);
+  line-height: 1.5;
+}
+
+/* Animation */
+@keyframes seoFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile refinement */
+@media (max-width: 520px) {
+  .wa-seo-content {
+    padding: 26px 22px;
   }
 
-  .wa-output {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .wa-output button {
+  .wa-seo-toggle-btn {
     width: 100%;
+    justify-content: center;
   }
+}
+.wa-seo-toggle-btn {
+  margin: 0 auto;
+  display: flex;
 }

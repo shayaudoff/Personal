@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3PED6JPPC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Free WhatsApp Link Generator | Create Direct WhatsApp Chat Links Instantly</title>
+    <meta name="description" content="Free WhatsApp link generator to create direct WhatsApp chat links instantly. No signup required. Perfect for businesses, creators, and personal use.">
+    <meta name="keywords" content="WhatsApp link generator, WhatsApp chat link, create WhatsApp link, wa.me link generator, WhatsApp business link">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://shayaudoff.com/projects/WAlinkgenerator">
+    <link rel="stylesheet" href="../../style.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<meta property="og:title" content="Free WhatsApp Link Generator">
+<meta property="og:description" content="Create a direct WhatsApp chat link in seconds. Simple, fast, and free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://YOURDOMAIN.com/whatsapp-link-generator">
 
-    gtag('config', 'G-W3PED6JPPC');
-  </script>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WhatsApp Link Generator</title>
-  <link rel="stylesheet" href="/style.css" />
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free WhatsApp Link Generator">
+<meta name="twitter:description" content="Generate WhatsApp chat links instantly with no signup.">
 </head>
-<body class="about-page">
+<body class="project-page"> 
 
 <nav class="navbar">
   <div class="mobile-toggle" id="mobileToggle">
@@ -23,7 +27,6 @@
     <span class="bar"></span>
     <span class="bar"></span>
   </div>
-
   <div class="navbar-inner">
     <div class="brand">Shaya Udoff</div>
     <ul>
@@ -42,150 +45,277 @@
     <ul>
       <li><a href="/home/">Home</a></li>
       <li><a href="/photopage/">Photos</a></li>
-      <li><a href="/projects/">Projects</a></li>
-      <li><a href="/about/" class="active">About</a></li>
+      <li><a href="/projects/" class="active">Projects</a></li>
+      <li><a href="/about/">About</a></li>
       <li><a href="/contact/">Contact</a></li>
     </ul>
   </nav>
 </div>
 
-<div class="page-content">
+<main style="padding-top: 100px; min-height: 80vh;">
 
-  <div class="wapage-header">
-    <h2>WhatsApp Link Generator</h2>
-    <p>Get a WhatsApp link to start chatting.</p>
-  </div>
-
-  <div class="wa-generator">
-    <div class="wa-generator-container">
-      
-      <div class="phone-input">
-        <label for="phone">Phone Number (with country code)</label>
-        <input type="text" id="phone" class="wa-input" placeholder="e.g. 15551234567">
-      </div>
-
-      <div class="message-input">
-        <label for="message">Message</label>
-        <textarea id="message" class="wa-textarea" rows="4" placeholder="Type your message here..."></textarea>
-      </div>
-
-      <div class="generate-button">
-        <button id="generate" class="wa-button">Generate Link</button>
-        <button id="newLink" class="wa-button" style="display:none; margin-left:10px; background: #555;">New Link</button>
-      </div>
-
-      <div class="output wa-output" style="display:none;" id="outputContainer">
-        <input type="text" id="waLinkOutput" readonly>
-        <button id="copyLink">Copy</button>
-      </div>
-
+  <section class="wa-glass-card">
+    
+    <div class="wa-header">
+      <h1>WhatsApp Link Generator</h1>
+      <p>Create a direct WhatsApp chat link instantly for personal or business use.</p>
     </div>
-  </div>
+
+    <div id="inputSection">
+      
+      <div class="wa-row" style="display: flex; gap: 15px; margin-bottom: 15px;">
+        <div class="wa-form-group" style="flex: 1;">
+          <label for="userName">Your Name</label>
+          <input type="text" id="userName" class="wa-input" placeholder="Name" required>
+        </div>
+        <div class="wa-form-group" style="flex: 1;">
+          <label for="userEmail">Your Email (Optional)</label>
+          <input type="email" id="userEmail" class="wa-input" placeholder="Email">
+        </div>
+      </div>
+
+     <div class="wa-disclaimer" style="text-align: left; font-size: 0.75rem; color: var(--muted); 
+     margin-top: -10px; margin-bottom: 18px; opacity: 0.85;">
+     <i class="fas fa-check-circle" style="color: #25D366;"></i> Your email is optional. We will never sell
+     your information or spam you. We are just collecting it to enhance your experience. Read our <a href="/privacy/" target="_blank" style="text-decoration:underline;">privacy policy</a>
+      </div>
+
+      <div class="wa-form-group">
+        <label for="phone">WhatsApp Number</label>
+        <input type="tel" id="phone" class="wa-input" placeholder="e.g. 1 555 123 4567" required>
+      </div>
+
+      <div class="wa-form-group">
+        <label for="message">Pre-filled Message (Optional)</label>
+        <textarea id="message" class="wa-textarea" placeholder="Hi, I found your portfolio..."></textarea>
+      </div>
+
+      <button id="generateBtn" class="wa-btn-primary">
+        <i class="fab fa-whatsapp"></i> Generate Link
+      </button>
+      
+      <div id="loadingSpinner" style="display:none; color:white; margin-top:10px;">
+        <i class="fas fa-circle-notch fa-spin"></i> Saving...
+      </div>
+    </div>
+
+    <div id="resultSection" class="wa-result-box">
+      <div class="wa-form-group">
+        <label>Your Link</label>
+        <input type="text" id="waLinkOutput" class="wa-input" readonly>
+      </div>
+      
+      <div class="wa-result-actions">
+        <button id="copyBtn" class="wa-btn-secondary">Copy</button>
+        <button id="openBtn" class="wa-btn-secondary" style="background: rgba(37, 211, 102, 0.15); color: #075e54;">Open Chat</button>
+      </div>
+      
+      <button id="resetBtn" style="background:none; border:none; margin-top:12px; color:var(--muted); cursor:pointer; font-size:0.9rem; text-decoration:underline;">Create Another</button>
+    </div>
+
+    <div class="wa-trust">
+      <i class="fas fa-shield-alt"></i> &nbsp;No account or login required. and ofc as always 🔒 Private & Secure.
+    </div>
 
 
-</div>
+  </section>
 
-<script>
+  <button id="toggleSeoBtn" class="wa-seo-toggle-btn">View Tips, FAQ & Info</button>
 
-  // Mobile Menu Logic
-  const mobileToggle = document.getElementById('mobileToggle');
-  const sidePanel = document.getElementById('sidePanel');
-  const closePanel = document.getElementById('closePanel');
+  <section class="wa-seo-content" style="max-width:900px;margin:60px auto;color:var(--muted);line-height:1.7;">
+    <h2>What Is a WhatsApp Link Generator?</h2>
+    <p>
+      A WhatsApp link generator lets you create a clickable link that opens a chat with your WhatsApp number instantly.
+      This is perfect for businesses, freelancers, creators, and anyone who wants to make it easier for people to contact them.
+    </p>
 
-  function toggleMenu() {
-    const isOpen = sidePanel.classList.contains('open');
-    if (isOpen) {
-      sidePanel.classList.remove('open');
-      mobileToggle.classList.remove('open');
-    } else {
-      sidePanel.classList.add('open');
-      mobileToggle.classList.add('open');
-    }
-  }
+    <h2>How to Create a WhatsApp Chat Link</h2>
+    <ol>
+      <li>Enter your WhatsApp phone number</li>
+      <li>Add an optional pre-filled message</li>
+      <li>Click generate and copy your WhatsApp link</li>
+    </ol>
 
-  mobileToggle.addEventListener('click', toggleMenu);
-  closePanel.addEventListener('click', toggleMenu);
+    <h2>Why Use Our WhatsApp Link Generator?</h2>
+    <ul>
+      <li>100% free WhatsApp link generator</li>
+      <li>No login or signup required</li>
+      <li>Works on mobile and desktop</li>
+      <li>Instant wa.me link creation</li>
+    </ul>
 
-  // Close panel when clicking outside
-  document.addEventListener('click', (e) => {
-    if (sidePanel.classList.contains('open') && 
-        !sidePanel.contains(e.target) && 
-        !mobileToggle.contains(e.target)) {
-      toggleMenu();
-    }
-  });
+    <h2>Frequently Asked Questions</h2>
+    <p><strong>How do I create a WhatsApp link?</strong><br>
+    Use our WhatsApp link generator by entering your phone number and clicking generate.</p>
 
-  // WhatsApp Generator Logic
-  document.getElementById('generate').addEventListener('click', function() {
-    let phone = document.getElementById('phone').value.trim();
-    const messageText = document.getElementById('message').value.trim();
+    <p><strong>Does this work with WhatsApp Business?</strong><br>
+    Yes, this works with both personal and WhatsApp Business accounts.</p>
 
-    if (!phone) {
-      alert('Please enter a phone number.');
-      return;
-    }
+    <p><strong>Is this WhatsApp link generator free?</strong><br>
+    Yes, it's completely free with no limits.</p>
+  </section>
 
-    // Remove + if present
-    if (phone.startsWith('+')) {
-      phone = phone.slice(1);
-    }
-
-    // Basic validation
-    if (!/^\d{7,}$/.test(phone)) {
-      alert('Please enter a valid phone number (digits only, include country code).');
-      return;
-    }
-
-    const message = encodeURIComponent(messageText);
-    const waLink = `https://wa.me/${phone}?text=${message}`;
-
-    const linkOutput = document.getElementById('waLinkOutput');
-    const outputContainer = document.getElementById('outputContainer');
-    const newLinkBtn = document.getElementById('newLink');
-    const generateBtn = document.getElementById('generate');
-
-    linkOutput.value = waLink;
-    
-    // UI Updates
-    outputContainer.style.display = 'flex';
-    newLinkBtn.style.display = 'inline-block';
-    generateBtn.style.display = 'none'; // Hide generate button to clean up UI
-  });
-
-  document.getElementById('copyLink').addEventListener('click', function() {
-    const linkOutput = document.getElementById('waLinkOutput');
-    linkOutput.select();
-    linkOutput.setSelectionRange(0, 99999); // For mobile
-
-    navigator.clipboard.writeText(linkOutput.value).then(() => {
-      const originalText = this.textContent;
-      this.textContent = 'Copied!';
-      this.style.background = '#4cd964'; // iOS Success Green
-      setTimeout(() => {
-        this.textContent = originalText;
-        this.style.background = ''; // Revert to CSS default
-      }, 2000);
-    }).catch(() => {
-      alert('Failed to copy. Please manually copy the text box.');
-    });
-  });
-
-  document.getElementById('newLink').addEventListener('click', function() {
-    document.getElementById('phone').value = '';
-    document.getElementById('message').value = '';
-    
-    const outputContainer = document.getElementById('outputContainer');
-    outputContainer.style.display = 'none';
-    
-    this.style.display = 'none';
-    document.getElementById('generate').style.display = 'inline-block';
-  });
-</script>
+</main>
 
 <footer>
   <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
   <span class="rights-part"><i>all rights reserved</i></span>
 </footer>
+
+<script>
+  // ==========================================
+  //  CONFIGURATION
+  // ==========================================
+  const BACKEND_URL = "PASTE_YOUR_GOOGLE_SHEET_URL_HERE"; 
+  // ==========================================
+
+  // Get all elements once
+  const generateBtn = document.getElementById('generateBtn');
+  const loadingSpinner = document.getElementById('loadingSpinner');
+  const resultSection = document.getElementById('resultSection');
+  
+  const nameInput = document.getElementById('userName');
+  const emailInput = document.getElementById('userEmail');
+  const phoneInput = document.getElementById('phone');
+  const msgInput = document.getElementById('message');
+  
+  const output = document.getElementById('waLinkOutput');
+  const copyBtn = document.getElementById('copyBtn');
+  const openBtn = document.getElementById('openBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  
+  const toggleSeoBtn = document.getElementById('toggleSeoBtn');
+  const seoContent = document.querySelector('.wa-seo-content');
+
+  // Generate button click handler
+  generateBtn.addEventListener('click', function() {
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    let phone = phoneInput.value.replace(/\D/g, '');
+    let rawMsg = msgInput.value;
+    
+    if (!name) { 
+      alert("Please enter your name."); 
+      return; 
+    }
+    
+    if (phone.length < 7) { 
+      alert("Please enter a valid phone number."); 
+      return; 
+    }
+
+    let link = `https://wa.me/${phone}`;
+    if (rawMsg) {
+      link += `?text=${encodeURIComponent(rawMsg)}`;
+    }
+    
+    const dataToSend = {
+      date: new Date().toLocaleString(),
+      name: name,
+      email: email,
+      phone: phone,
+      message: rawMsg,
+      generatedLink: link
+    };
+
+    generateBtn.style.display = 'none';
+    loadingSpinner.style.display = 'block';
+
+    fetch(BACKEND_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dataToSend)
+    })
+    .then(function(response) {
+      console.log("Data sent to backend");
+    })
+    .catch(function(error) {
+      console.error("Backend error:", error);
+    })
+    .finally(function() {
+      loadingSpinner.style.display = 'none';
+      output.value = link;
+      resultSection.style.display = 'flex';
+    });
+  });
+
+  // Copy button
+  copyBtn.addEventListener('click', function() {
+    output.select();
+    output.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(output.value);
+    
+    let originalText = copyBtn.innerText;
+    copyBtn.innerText = "Copied!";
+    setTimeout(function() { 
+      copyBtn.innerText = originalText; 
+    }, 2000);
+  });
+
+  // Open button
+  openBtn.addEventListener('click', function() {
+    if (output.value) {
+      window.open(output.value, '_blank');
+    }
+  });
+
+  // Reset button
+  resetBtn.addEventListener('click', function() {
+    resultSection.style.display = 'none';
+    generateBtn.style.display = 'block';
+    
+    nameInput.value = '';
+    emailInput.value = '';
+    phoneInput.value = '';
+    msgInput.value = '';
+    output.value = '';
+  });
+
+  // Toggle SEO content button
+  toggleSeoBtn.addEventListener('click', function() {
+    if (seoContent.style.display === 'none' || seoContent.style.display === '') {
+      seoContent.style.display = 'block';
+      toggleSeoBtn.innerText = 'Hide Tips & Info';
+      seoContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      seoContent.style.display = 'none';
+      toggleSeoBtn.innerText = 'View Tips, FAQ & Info';
+    }
+  });
+
+  // Mobile menu handlers (only if elements exist)
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const sidePanel = document.getElementById('sidePanel');
+  const closePanel = document.getElementById('closePanel');
+
+  if (mobileToggle && sidePanel) {
+    mobileToggle.addEventListener('click', function() {
+      sidePanel.classList.add('open');
+    });
+  }
+
+  if (closePanel && sidePanel) {
+    closePanel.addEventListener('click', function() {
+      sidePanel.classList.remove('open');
+    });
+  }
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "WhatsApp Link Generator",
+  "applicationCategory": "Utility",
+  "operatingSystem": "All",
+  "description": "Free WhatsApp link generator to create direct WhatsApp chat links instantly.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
 
 </body>
 </html>
