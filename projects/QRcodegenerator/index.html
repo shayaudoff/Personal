@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3PED6JPPC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3PED6JPPC');
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>About Me</title>
+    <link rel="stylesheet" href="../../../style.css" />
+</head>
+<body class="about-page">
+
+  <!-- Navbar -->
+<nav class="navbar">
+
+  <!-- Mobile hamburger (must be outside navbar-inner) -->
+  <div class="mobile-toggle" id="mobileToggle">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>
+
+  <div class="navbar-inner">
+    <div class="brand">Shaya Udoff</div>
+    <ul>
+      <li><a href="/home/">Home</a></li>
+      <li><a href="/photopage/">Photos</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </div>
+
+</nav>
+
+<!-- Mobile side panel -->
+<div class="side-panel" id="sidePanel">
+  <button class="close-btn" id="closePanel">×</button>
+  <nav>
+    <ul>
+      <li><a href="/home/">Home</a></li>
+      <li><a href="/photopage/">Photos</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="container">
+    <div class="qr-glass-card">
+      <h1>QR Code Generator</h1>
+      <p class="subtitle">Create custom QR codes with advanced options</p>
+
+      <form id="qrForm" autocomplete="off">
+        <div class="qr-form-group">
+          <label for="linkInput">Link to encode</label>
+          <input type="url" id="linkInput" class="qr-input" placeholder="https://example.com" required>
+        </div>
+
+        <div class="qr-color-row">
+          <div class="qr-color-group">
+            <label for="frontColor">Foreground color</label>
+            <input type="color" id="frontColor" class="qr-color" value="#000000">
+          </div>
+          <div class="qr-color-group">
+            <label for="backColor">Background color</label>
+            <input type="color" id="backColor" class="qr-color" value="#ffffff">
+          </div>
+        </div>
+
+        <div class="qr-form-group">
+          <label for="sizeInput">Size (pixels)</label>
+          <input type="number" id="sizeInput" class="qr-number" min="50" max="1000" value="300">
+        </div>
+
+        <button type="button" class="qr-advanced-toggle" id="customToggle">
+          ⚙️ Show Advanced Customizations
+        </button>
+
+        <div class="qr-advanced-section" id="customizations">
+          <div class="customization-option">
+            <div class="checkbox-option">
+              <input type="checkbox" id="photoInQR">
+              <label for="photoInQR">Photo in QR code</label>
+            </div>
+            <div class="sub-options" id="photoOptions">
+              <div class="qr-form-group">
+                <label for="photoUpload">Upload photo</label>
+                <input type="file" id="photoUpload" class="qr-file" accept="image/*">
+              </div>
+              <div class="qr-form-group">
+                <label for="photoPlacement">Photo placement</label>
+                <select id="photoPlacement" class="qr-select">
+                  <option value="center-logo">Center logo</option>
+                  <option value="qr-as-photo">QR code fills photo shape</option>
+                  <option value="photo-background">Photo as background</option>
+                  <option value="photo-foreground">Photo as foreground pattern</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="customization-option">
+            <div class="checkbox-option">
+              <input type="checkbox" id="shapeCustom">
+              <label for="shapeCustom">Custom shape</label>
+            </div>
+            <div class="sub-options" id="shapeOptions">
+              <div class="qr-form-group">
+                <label for="qrShape">QR code shape</label>
+                <select id="qrShape" class="qr-select">
+                  <option value="square">Square (default)</option>
+                  <option value="circle">Circle</option>
+                  <option value="rounded-square">Rounded square</option>
+                  <option value="hexagon">Hexagon</option>
+                  <option value="star">Star</option>
+                  <option value="heart">Heart</option>
+                  <option value="custom-upload">Custom shape (upload SVG)</option>
+                </select>
+              </div>
+              <div class="qr-form-group" id="customShapeUpload" style="display:none;">
+                <label for="shapeUpload">Upload custom shape (SVG)</label>
+                <input type="file" id="shapeUpload" class="qr-file" accept=".svg">
+              </div>
+            </div>
+          </div>
+
+          <div class="customization-option">
+            <div class="checkbox-option">
+              <input type="checkbox" id="transparentBg">
+              <label for="transparentBg">Transparent background</label>
+            </div>
+          </div>
+
+          <div class="customization-option">
+            <div class="checkbox-option">
+              <input type="checkbox" id="gradientColors">
+              <label for="gradientColors">Gradient colors</label>
+            </div>
+            <div class="sub-options" id="gradientOptions">
+              <div class="qr-form-group">
+                <label for="gradientType">Gradient type</label>
+                <select id="gradientType" class="qr-select">
+                  <option value="linear">Linear</option>
+                  <option value="radial">Radial</option>
+                  <option value="conic">Conic</option>
+                </select>
+              </div>
+              <div class="qr-color-row">
+                <div class="qr-color-group">
+                  <label for="gradientColor1">Gradient color 1</label>
+                  <input type="color" id="gradientColor1" class="qr-color" value="#667eea">
+                </div>
+                <div class="qr-color-group">
+                  <label for="gradientColor2">Gradient color 2</label>
+                  <input type="color" id="gradientColor2" class="qr-color" value="#764ba2">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="customization-option">
+            <div class="checkbox-option">
+              <input type="checkbox" id="patternStyle">
+              <label for="patternStyle">Pattern style</label>
+            </div>
+            <div class="sub-options" id="patternOptions">
+              <div class="qr-form-group">
+                <label for="dotStyle">Dot style</label>
+                <select id="dotStyle" class="qr-select">
+                  <option value="square">Square</option>
+                  <option value="dots">Dots</option>
+                  <option value="rounded">Rounded</option>
+                  <option value="extra-rounded">Extra rounded</option>
+                  <option value="classy">Classy</option>
+                  <option value="classy-rounded">Classy rounded</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="customization-option">
+            <div class="checkbox-option">
+              <input type="checkbox" id="cornerStyle">
+              <label for="cornerStyle">Corner customization</label>
+            </div>
+            <div class="sub-options" id="cornerOptions">
+              <div class="qr-form-group">
+                <label for="cornerSquareStyle">Corner square style</label>
+                <select id="cornerSquareStyle" class="qr-select">
+                  <option value="square">Square</option>
+                  <option value="dot">Dot</option>
+                  <option value="extra-rounded">Extra rounded</option>
+                </select>
+              </div>
+              <div class="qr-form-group">
+                <label for="cornerDotStyle">Corner dot style</label>
+                <select id="cornerDotStyle" class="qr-select">
+                  <option value="square">Square</option>
+                  <option value="dot">Dot</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="customization-option">
+            <div class="checkbox-option">
+              <input type="checkbox" id="animatedQR">
+              <label for="animatedQR">Animated QR code</label>
+            </div>
+            <div class="sub-options" id="animationOptions">
+              <div class="qr-form-group">
+                <label for="animationType">Animation type</label>
+                <select id="animationType" class="qr-select">
+                  <option value="pulse">Pulse</option>
+                  <option value="rotate">Rotate</option>
+                  <option value="wave">Wave</option>
+                  <option value="color-shift">Color shift</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="customization-option">
+            <div class="checkbox-option">
+              <input type="checkbox" id="downloadOptions">
+              <label for="downloadOptions">Download format options</label>
+            </div>
+            <div class="sub-options" id="downloadFormatOptions">
+              <div class="qr-form-group">
+                <label for="fileFormat">File format</label>
+                <select id="fileFormat" class="qr-select">
+                  <option value="png">PNG</option>
+                  <option value="svg">SVG</option>
+                  <option value="jpg">JPG</option>
+                  <option value="webp">WebP</option>
+                  <option value="gif">GIF (if animated)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="customization-option">
+            <div class="checkbox-option">
+              <input type="checkbox" id="errorCorrection">
+              <label for="errorCorrection">Error correction level</label>
+            </div>
+            <div class="sub-options" id="errorCorrectionOptions">
+              <div class="qr-form-group">
+                <label for="correctionLevel">Correction level</label>
+                <select id="correctionLevel" class="qr-select">
+                  <option value="L">Low (7%)</option>
+                  <option value="M" selected>Medium (15%)</option>
+                  <option value="Q">Quartile (25%)</option>
+                  <option value="H">High (30%)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="customization-option">
+            <div class="checkbox-option">
+              <input type="checkbox" id="frameOptions">
+              <label for="frameOptions">Add frame/border</label>
+            </div>
+            <div class="sub-options" id="frameCustomOptions">
+              <div class="qr-form-group">
+                <label for="frameStyle">Frame style</label>
+                <select id="frameStyle" class="qr-select">
+                  <option value="none">None</option>
+                  <option value="simple">Simple border</option>
+                  <option value="text-bottom">Text at bottom</option>
+                  <option value="text-top">Text at top</option>
+                  <option value="full-text">Text around</option>
+                </select>
+              </div>
+              <div class="qr-form-group">
+                <label for="frameText">Frame text</label>
+                <input type="text" id="frameText" class="qr-input" placeholder="Scan me!">
+              </div>
+              <div class="qr-form-group">
+                <label for="frameColor">Frame color</label>
+                <input type="color" id="frameColor" class="qr-color" value="#000000">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="qr-btn-primary" disabled>Generate QR Code (Prototype Only)</button>
+      </form>
+
+      <p class="prototype-note"><em>Note: This is a front-end prototype. All options are for demonstration purposes only.</em></p>
+      <p class="privacy-disclaimer"><strong>Disclaimer:</strong> This tool does not collect or transmit any data. All inputs remain on your device.</p>
+    </div>
+  </div>
+
+  <script>
+    // Toggle customizations panel
+    document.getElementById('customToggle').addEventListener('click', function() {
+      const customizations = document.getElementById('customizations');
+      customizations.classList.toggle('open');
+      this.textContent = customizations.classList.contains('open')
+        ? '⚙️ Hide Advanced Customizations'
+        : '⚙️ Show Advanced Customizations';
+    });
+
+    // Toggle sub-options for each customization
+    const customizationOptions = [
+      { checkbox: 'photoInQR', subOptions: 'photoOptions' },
+      { checkbox: 'shapeCustom', subOptions: 'shapeOptions' },
+      { checkbox: 'gradientColors', subOptions: 'gradientOptions' },
+      { checkbox: 'patternStyle', subOptions: 'patternOptions' },
+      { checkbox: 'cornerStyle', subOptions: 'cornerOptions' },
+      { checkbox: 'animatedQR', subOptions: 'animationOptions' },
+      { checkbox: 'downloadOptions', subOptions: 'downloadFormatOptions' },
+      { checkbox: 'errorCorrection', subOptions: 'errorCorrectionOptions' },
+      { checkbox: 'frameOptions', subOptions: 'frameCustomOptions' }
+    ];
+
+    customizationOptions.forEach(option => {
+      const checkbox = document.getElementById(option.checkbox);
+      const subOptions = document.getElementById(option.subOptions);
+      if (checkbox && subOptions) {
+        checkbox.addEventListener('change', function() {
+          subOptions.classList.toggle('open', this.checked);
+        });
+      }
+    });
+
+    // Show custom shape upload when selected
+    document.getElementById('qrShape').addEventListener('change', function() {
+      const uploadDiv = document.getElementById('customShapeUpload');
+      uploadDiv.style.display = this.value === 'custom-upload' ? 'block' : 'none';
+    });
+
+    // Form submission (placeholder)
+    document.getElementById('qrForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('QR code generation would happen here! (Prototype only)');
+    });
+  </script>
+</body>
+</html>
