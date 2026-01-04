@@ -13,7 +13,7 @@
 <meta property="og:title" content="Free WhatsApp Link Generator">
 <meta property="og:description" content="Create a direct WhatsApp chat link in seconds. Simple, fast, and free.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://YOURDOMAIN.com/whatsapp-link-generator">
+<meta property="og:url" content="https://shayaudoff.com/projects/WAlinkgenerator">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Free WhatsApp Link Generator">
@@ -69,14 +69,14 @@
           <input type="text" id="userName" class="wa-input" placeholder="Name" required>
         </div>
         <div class="wa-form-group" style="flex: 1;">
-          <label for="userEmail">Your Email</label>
-          <input type="email" id="userEmail" class="wa-input" placeholder="Email" required>
+          <label for="userEmail">Your Email (Optional)</label>
+          <input type="email" id="userEmail" class="wa-input" placeholder="Email">
         </div>
       </div>
 
      <div class="wa-disclaimer" style="text-align: left; font-size: 0.75rem; color: var(--muted); 
      margin-top: -10px; margin-bottom: 18px; opacity: 0.85;">
-     <i class="fas fa-check-circle" style="color: #25D366;"></i> Email is required for verification. We never sell or spam your information. Read our <a href="/privacy/" target="_blank" style="text-decoration:underline;">privacy policy</a>
+     <i class="fas fa-check-circle" style="color: #25D366;"></i> Email is optional. We never sell or spam your information. Read our <a href="/privacy/" target="_blank" style="text-decoration:underline;">privacy policy</a>
       </div>
 
       <div class="wa-form-group">
@@ -167,7 +167,7 @@
   // ==========================================
   //  CONFIGURATION
   // ==========================================
-  const BACKEND_URL = "https://script.google.com/macros/s/AKfycbwQcqjRo-W1EFVQPZMHttRdQHVoOyKZZRJXSQ9iIf05yq62ftNB2RYOJ86Vrn1-3Flz/exec";
+  const BACKEND_URL = "/api/lead";
   // ==========================================
 
   // Get all elements once
@@ -195,8 +195,8 @@
     let phone = phoneInput.value.replace(/\D/g, '');
     let rawMsg = msgInput.value.trim();
 
-    if (!name || !email) {
-      alert("Please enter your name and email.");
+    if (!name) {
+      alert("Please enter your name.");
       return;
     }
 
@@ -230,19 +230,44 @@
     };
 
     generateBtn.style.display = 'none';
+    generateBtn.disabled = true;
     loadingSpinner.style.display = 'block';
 
-    fetch(BACKEND_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(dataToSend)
-    })
-    .catch(err => console.error("Backend error:", err))
-    .finally(() => {
+    // POST to backend (best-effort). We still show the link even if logging fails.
+    let logged = false;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+    try {
+      const resp = await fetch(BACKEND_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataToSend),
+        signal: controller.signal
+      });
+
+      const text = await resp.text();
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}: ${text}`);
+
+      // Try to parse JSON if possible, but don't fail if it's not JSON.
+      try {
+        const parsed = JSON.parse(text);
+        logged = Boolean(parsed && parsed.ok);
+        console.log("Backend response:", parsed);
+      } catch {
+        logged = true;
+        console.log("Backend response (non-JSON):", text);
+      }
+    } catch (err) {
+      console.error("Backend log failed:", err);
+    } finally {
+      clearTimeout(timeoutId);
       loadingSpinner.style.display = 'none';
       output.value = link;
       resultSection.style.display = 'flex';
-    });
+      // Keep UI the same; just add a helpful console hint.
+      if (!logged) console.warn("Lead was not logged. Check /api/lead logs + env vars.");
+    }
   });
 
   // Copy button
@@ -269,6 +294,7 @@
   resetBtn.addEventListener('click', function() {
     resultSection.style.display = 'none';
     generateBtn.style.display = 'block';
+    generateBtn.disabled = false;
     
     nameInput.value = '';
     emailInput.value = '';
