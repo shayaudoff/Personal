@@ -12,10 +12,10 @@
   <!-- WELCOME BOX -->
   <div class="entry-container" id="welcomeBox">
     <h1>Welcome to Shaya Udoff’s Website</h1>
-    <p>By pressing enter you agree to the <button class="view-disclaimer-btn" onclick="showDisclaimer(false)">
-      terms and conditions
+    <p>By pressing Enter, you agree to the <button class="view-disclaimer-btn" onclick="showDisclaimer(false)">
+      terms, privacy, and tracking notice
     </button>
-      <br>and have read the disclaimer.</p>
+      <br>and confirm you’ve read the disclaimer.</p>
 
     <button class="enter-site-btn" onclick="showDisclaimer(true)">
       Enter
@@ -32,40 +32,25 @@
 
       <p>
         By continuing, you agree to the following.<br>
-        Don’t worry — I’ve got everything under control.<br><br>
+        This site may collect basic usage data to improve the experience and prevent abuse.<br><br>
 
-        • Yeah, I collect data.<br>
-        Calm down — I just like knowing who’s repeatedly refreshing the page like they’re waiting for classified updates.<br>
-        It’s impressive.<br>
-        Slightly concerning.<br>
-        But impressive.<br><br>
+        • What we may collect (depending on your consent and browser/device support):<br>
+        Page views, button clicks, timestamps, referrer, and basic device/browser info (like user-agent and language).<br>
+        On the server, we may also receive your IP address and coarse location (country/region/city) from the hosting provider.<br><br>
 
-        • I’m aware of your device stats.<br>
-        Your battery percentage? Not great.<br>
-        Your WiFi name? Questionable.<br>
-        Your tab count? Bold.<br>
-        I respect the chaos — but I still judge it.<br><br>
+        • What we do NOT collect from your computer:<br>
+        We do not have access to your Wi‑Fi name, your tabs, your files, your contacts, your camera/mic, or anything like that unless you explicitly grant permission in your browser.<br><br>
 
-        • This site runs exactly how I built it: intentionally, efficiently, and occasionally with attitude.<br>
-        If something glitches, that’s your setup arguing with mine.<br>
-        Mine usually wins.<br><br>
+        • Consent by action:<br>
+        By pressing Enter, you provide consent for the collection and processing of usage and technical data as described above. Entry to the site is conditional on this consent.<br><br>
 
-        • Pressing Enter means you’re responsible for whatever follows.<br>
-        Inspiration, regret, motivation, confusion — all of it.<br>
-        I just provide the door — you’re the one walking through it.<br><br>
+        <div style="margin-top:14px;">
+          Good to go? Press Enter.
+        </div>
 
-        • Cookies may be used.<br>
-        Digital ones, mostly.<br>
-        Real ones if I take a break.<br>
-        If any disappear, I’m assuming you did it.<br><br>
-
-        By hitting enter, you agree that I may or may not monitor… stuff. Nothing creepy. Just… technical vibes.<br>
-        You also accept that if anything glitches, crashes, or explodes digitally, I plead the fifth.<br>
-        Cookies might be used. Browser ones. Real ones. Maybe encrypted ones I made for fun.<br>
-        And look, if you’re still reading this, you’re either brave or nosy — either way, you’re in.<br><br>
-
-        Good luck.<br>
-        Press Enter — I’ve already got the rest handled.
+        <small style="display:block; margin-top:18px; opacity:0.6; line-height:1.35;">
+          Tracking/legal summary: By pressing Enter, you consent to the collection and processing of technical and usage data (including IP address, device/browser headers, coarse geo, pages viewed, clicks, timestamps, referrer, and campaign parameters if present) for site functionality, security, analytics, and attribution. Data may be stored in our database and accessed by service providers solely to operate this site. We do not sell personal data. Retention is limited to what is reasonably necessary for operations and analysis. If you do not agree, do not enter the site.
+        </small>
       </p>
 
       <button class="close-disclaimer-btn" onclick="hideDisclaimer()">Close</button>
@@ -73,21 +58,168 @@
   </div>
 
 <script>
-function showDisclaimer(autoEnter) {
-  if (autoEnter) {
-    window.location.href = "/home/";
-    return;
+  // Simple, transparent event logging without exposing secrets client-side.
+  // Server-side /api endpoints should write to Supabase using service role keys.
+
+  function getOrCreateVisitorId() {
+    const key = "visitor_id";
+    let id = localStorage.getItem(key);
+    if (!id) {
+      id = (crypto?.randomUUID?.() || ("v_" + Math.random().toString(16).slice(2) + Date.now().toString(16)));
+      localStorage.setItem(key, id);
+    }
+    return id;
   }
 
-  document.getElementById("welcomeBox").classList.add("shift-up");
-  document.getElementById("disclaimerOverlay").classList.add("show");
-  document.getElementById("disclaimerBox").classList.add("show");
-}
-function hideDisclaimer() {
-  document.getElementById("welcomeBox").classList.remove("shift-up");
-  document.getElementById("disclaimerOverlay").classList.remove("show");
-  document.getElementById("disclaimerBox").classList.remove("show"); 
-}
+  function loadConsent() {
+    return { analytics: true, marketing: true, version: "v1" };
+  }
+
+  function saveConsent() {
+    localStorage.setItem("consent_v1", JSON.stringify({
+      analytics: true,
+      marketing: true,
+      updatedAt: new Date().toISOString(),
+      version: "v1"
+    }));
+  }
+
+  function getUtmParams() {
+    const params = new URLSearchParams(window.location.search);
+    const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+    const utm = {};
+    for (const k of keys) {
+      const v = params.get(k);
+      if (v) utm[k] = v;
+    }
+    return Object.keys(utm).length ? utm : null;
+  }
+
+  async function postEvent(payload) {
+    try {
+      if (navigator.sendBeacon) {
+        const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+        navigator.sendBeacon("/api/event", blob);
+        return;
+      }
+    } catch (e) {
+      // fall through
+    }
+
+    try {
+      await fetch("/api/event", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        keepalive: true,
+      });
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  function buildBasePayload() {
+    const consent = loadConsent();
+    return {
+      visitor_id: getOrCreateVisitorId(),
+      path: window.location.pathname,
+      referrer: document.referrer || null,
+      ts: new Date().toISOString(),
+      consent_version: "v1",
+      consent_analytics: Boolean(consent.analytics),
+      consent_marketing: Boolean(consent.marketing),
+      // Client-visible device hints (non-identifying on their own)
+      tz: Intl.DateTimeFormat().resolvedOptions().timeZone || null,
+      locale: navigator.language || null,
+      viewport_w: window.innerWidth || null,
+      viewport_h: window.innerHeight || null,
+      screen_w: window.screen?.width || null,
+      screen_h: window.screen?.height || null,
+      dpr: window.devicePixelRatio || null,
+      color_scheme: (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light",
+      utm: getUtmParams(),
+    };
+  }
+
+  async function logEnterEvent() {
+    const payload = {
+      ...buildBasePayload(),
+      event: "enter",
+      event_type: "navigation",
+    };
+    postEvent(payload);
+  }
+
+  function shouldTrackClicks() {
+    return true; // tracking is mandatory after Enter
+  }
+
+  function describeElement(el) {
+    if (!el) return {};
+    const tag = el.tagName ? el.tagName.toLowerCase() : null;
+    const id = el.id || null;
+    const classes = el.className ? String(el.className).trim() : null;
+    const text = (el.innerText || el.textContent || "").trim().slice(0, 120) || null;
+    const href = el.getAttribute && el.getAttribute("href") ? el.getAttribute("href") : null;
+    const name = el.getAttribute && el.getAttribute("name") ? el.getAttribute("name") : null;
+    const type = el.getAttribute && el.getAttribute("type") ? el.getAttribute("type") : null;
+    return { tag, id, classes, text, href, name, type };
+  }
+
+  function initClickTracking() {
+    document.addEventListener("click", (e) => {
+      if (!shouldTrackClicks()) return;
+
+      const target = e.target && e.target.closest ? e.target.closest("button, a, input[type='button'], input[type='submit']") : null;
+      if (!target) return;
+
+      const payload = {
+        ...buildBasePayload(),
+        event: "click",
+        event_type: "interaction",
+        element: describeElement(target),
+      };
+
+      postEvent(payload);
+    }, { passive: true });
+  }
+
+  function showDisclaimer(autoEnter) {
+    if (autoEnter) {
+      // Mandatory consent by action (Enter)
+      saveConsent();
+      logEnterEvent();
+      window.location.href = "/home/";
+      return;
+    }
+
+    document.getElementById("welcomeBox").classList.add("shift-up");
+    document.getElementById("disclaimerOverlay").classList.add("show");
+    document.getElementById("disclaimerBox").classList.add("show");
+
+    // Ensure consent checkboxes are populated when the disclaimer opens
+    // initConsentUI(); // removed as per instructions
+  }
+
+  function hideDisclaimer() {
+    document.getElementById("welcomeBox").classList.remove("shift-up");
+    document.getElementById("disclaimerOverlay").classList.remove("show");
+    document.getElementById("disclaimerBox").classList.remove("show");
+  }
+
+  // Optional: allow keyboard Enter to trigger the same flow
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const overlayShown = document.getElementById("disclaimerOverlay").classList.contains("show");
+      if (overlayShown) {
+        // If the disclaimer is open, Enter means proceed
+        showDisclaimer(true);
+      }
+    }
+  });
+
+  // Initialize click tracking globally for this page
+  initClickTracking();
 </script>
 
 </body>
