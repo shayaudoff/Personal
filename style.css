@@ -822,6 +822,115 @@ footer {
   }
 }
 
+/* =========================
+   UWD PROJECT PAGE
+   ========================= */
+.uwd-main {
+  min-height: 80vh;
+  padding: 110px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.uwd-hero {
+  width: min(980px, 96%);
+  padding: 34px 36px;
+  text-align: left;
+}
+
+.uwd-hero h1 {
+  font-size: 2rem;
+  margin: 10px 0 12px;
+}
+
+.uwd-hero p {
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.uwd-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: rgba(60, 185, 204, 0.409);
+  color: #000000;
+  font-weight: 600;
+}
+
+.uwd-actions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  align-items: center;
+}
+
+.uwd-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+}
+
+.uwd-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+}
+
+.uwd-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.uwd-grid {
+  width: min(980px, 96%);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.uwd-card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.uwd-card p {
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .uwd-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .uwd-hero {
+    padding: 26px 24px;
+  }
+
+  .uwd-hero h1 {
+    font-size: 1.7rem;
+  }
+}
+
 
 /* ============================
    ENTRY PAGE + DISCLAIMER STYLING (FIXED & CLEAN)

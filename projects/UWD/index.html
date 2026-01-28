@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Official Udoff Web Development Site</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="project-page uwd-page">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="mobile-toggle" id="mobileToggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <div class="navbar-inner">
+      <div class="brand">Shaya Udoff</div>
+      <ul>
+        <li><a href="../../home/">Home</a></li>
+        <li><a href="../../photopage/">Photos</a></li>
+        <li><a href="../../projects/" class="active">Projects</a></li>
+        <li><a href="../../about/">About</a></li>
+        <li><a href="../../contact/">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Mobile side panel -->
+  <div class="side-panel" id="sidePanel">
+    <button class="close-btn" id="closePanel">×</button>
+    <nav>
+      <ul>
+        <li><a href="../../home/">Home</a></li>
+        <li><a href="../../photopage/">Photos</a></li>
+        <li><a href="../../projects/" class="active">Projects</a></li>
+        <li><a href="../../about/">About</a></li>
+        <li><a href="../../contact/">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main class="uwd-main">
+    <section class="uwd-hero card">
+      <span class="uwd-badge"> UWD Certified Official Project</span>
+      <h1>Official Udoff Web Development Site</h1>
+      <p>
+        This is the official home for Udoff Web Development. We are actively
+        working on it — refining the layout, adding new content, and polishing
+        the booking flow.
+      </p>
+      <div class="uwd-actions">
+        <a class="uwd-cta" href="https://udoffwebdevelopment.com" target="_blank" rel="noopener">
+          Check out the site
+        </a>
+        <span class="uwd-note">We are still building, but the preview is live.</span>
+      </div>
+    </section>
+
+    <section class="uwd-grid">
+      <div class="uwd-card card">
+     <h2>Live Right Now</h2>
+     <span class="status-pill live">Live</span>
+<p>
+The homepage is up, the foundation is set, and the structure is locked in. 
+You’re seeing the beginning — clean, intentional, and very much on purpose. 
+More layers are coming. Stay curious.
+</p>
+</div>
+
+<div class="uwd-card card">
+<h2>Actively Building</h2>
+<span class="status-pill beta">Working On It</span>
+<p>
+This is where the real work happens. 
+Pages are being wired together, logic is coming online, and the site is starting to think for itself. 
+Less flash, more depth — and it’s moving fast.
+</p>
+</div>
+
+<div class="uwd-card card">
+<h2>Coming Up Next</h2>
+<span class="status-pill progress">Stay Tuned!</span>
+<p>
+Performance tuning, SEO refinement, and final content polish. 
+The kind of details most people don’t notice — until they feel how smooth everything is.
+</p>
+</div>
+  </main>
+
+  <!-- Footer ------------------------------------------------------------->
+  <footer>
+    <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
+    <span class="rights-part"><i>all rights reserved</i></span>
+  </footer>
+
+  <script>
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const sidePanel = document.getElementById('sidePanel');
+    const closePanel = document.getElementById('closePanel');
+
+    mobileToggle.addEventListener('click', () => {
+      sidePanel.classList.add('open');
+    });
+
+    closePanel.addEventListener('click', () => {
+      sidePanel.classList.remove('open');
+    });
+  </script>
+</body>
+</html>
