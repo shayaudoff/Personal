@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curiosity Detected | Shaya Udoff</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="./stalker.css" />
+</head>
+<body class="project-page stalker-page">
+
+  <div class="stalker-scroll-progress" id="scrollProgress"></div>
+
+  <nav class="navbar">
+    <div class="mobile-toggle" id="mobileToggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="navbar-inner">
+      <div class="brand">Shaya Udoff</div>
+      <ul>
+        <li><a href="/home/">Home</a></li>
+        <li><a href="/photopage/">Photos</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="side-panel" id="sidePanel">
+    <button class="close-btn" id="closePanel">×</button>
+    <nav>
+      <ul>
+        <li><a href="/home/">Home</a></li>
+        <li><a href="/photopage/">Photos</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main class="stalker-main">
+
+    <!-- ── HERO ── -->
+    <section class="card stalker-card stalker-hero">
+      <p class="stalker-kicker">Research Department · Case #00312</p>
+      <h1>More Than Just Curiosity Detected</h1>
+      <p class="stalker-subtitle" id="modeSubtitle">Welcome to the curiosity audit. Answer carefully.</p>
+
+      <!-- Live monitor banner -->
+      <div class="stalker-monitor-banner" id="monitorBanner">
+        <span class="monitor-dot"></span>
+        <span id="monitorText">Live session active — your scroll depth is being monitored. Professionally.</span>
+      </div>
+
+      <p class="stalker-hint">Mode affects responses and grading logic. Choose wisely.</p>
+
+      <div class="stalker-intent-grid">
+        <button class="stalker-btn stalker-intent-btn" data-intent="curious" data-action="intent_curious">🔍 I'm just curious</button>
+        <button class="stalker-btn stalker-intent-btn" data-intent="heard-name" data-action="intent_heard_name">👂 I heard your name</button>
+        <button class="stalker-btn stalker-intent-btn" data-intent="research" data-action="intent_research">📋 Research (totally normal)</button>
+        <button class="stalker-btn stalker-intent-btn" data-intent="vibe" data-action="intent_vibe">✨ Vibe check</button>
+        <button class="stalker-btn stalker-intent-btn" data-intent="accident" data-action="intent_accident">🤷 I clicked by accident</button>
+        <button class="stalker-btn stalker-intent-btn" data-intent="not-stalking" data-action="intent_not_stalking">🚫 I'm not stalking</button>
+      </div>
+
+      <!-- Lurk counter chips -->
+      <div class="stalker-counter-row">
+        <span class="stalker-chip">Clicks so far: <strong id="clickCount">0</strong></span>
+        <span class="stalker-chip">Buttons pressed: <strong id="btnCount">0</strong></span>
+        <span class="stalker-chip">Scroll depth: <strong id="scrollDepth">0%</strong></span>
+      </div>
+
+      <div class="stalker-meter-wrap" style="margin-top:12px;">
+        <div class="stalker-meter-head">
+          <h2>Lurk Level</h2>
+          <span id="lurkValue">12%</span>
+        </div>
+        <div class="stalker-meter-track" role="progressbar" aria-label="Lurk Level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="12">
+          <div class="stalker-meter-fill" id="lurkFill"></div>
+        </div>
+        <p class="stalker-meter-label" id="lurkLabel">Harmless curiosity</p>
+      </div>
+       </section>
+
+    <!-- ── RESULT CARD ── -->
+    <section class="card stalker-card stalker-result" id="intentResult" aria-live="polite" aria-atomic="true">
+      <h2>Result</h2>
+      <p id="intentResultText">Pick a reason above. The evaluator is listening. It always is.</p>
+    </section>
+
+    <!-- ── CONFESSION WALL ── -->
+    <section class="card stalker-card stalker-line-card">
+      <h2>If you found this page, you were absolutely looking.</h2>
+      <p>Respect. Denial is expensive and this page is free. The first step is honesty. The second step is scrolling anyway.</p>
+    </section>
+
+    <!-- ── VERDICT ── -->
+    <section class="card stalker-card stalker-verdict" id="verdictCard" aria-live="polite" aria-atomic="true">
+      <h2 id="verdictHeading">Verdict</h2>
+      <p id="verdictSubheading" class="stalker-subcopy">Run a case check. It is dramatic, not judicial.</p>
+      <button id="runVerdict" class="stalker-btn stalker-btn-strong" type="button" data-action="run_verdict">🔎 Run Background Check</button>
+      <div id="verdictOutput" class="stalker-verdict-output">
+        <p id="verdictStatus">Press the button. We will act official for one second.</p>
+        <p id="verdictLine" class="stalker-verdict-line"></p>
+        <p id="verdictDisclaimer" class="stalker-small"></p>
+      </div>
+    </section>
+
+    <!-- ── EVIDENCE DOSSIER (NEW) ── -->
+    <section class="card stalker-card">
+      <h2>Evidence Dossier</h2>
+      <p>Compiled in real-time. You did this to yourself.</p>
+      <div class="stalker-evidence-ticker" id="evidenceTicker">
+        Awaiting first action...
+      </div>
+    </section>
+
+    <!-- ── SAY HI CTA ── -->
+    <section class="card stalker-card stalker-cta-card">
+      <h2>You could've just said hi</h2>
+      <p class="stalker-subcopy">This page took more effort than a DM. Statistically speaking.</p>
+      <button id="sayHiBtn" class="stalker-btn stalker-btn-strong" type="button" data-action="say_hi_toggle">👋 You could've just said hi</button>
+      <div id="sayHiPanel" class="stalker-hi-panel" aria-hidden="true">
+        <div class="stalker-hi-actions">
+          <a class="stalker-btn" id="dmLink" href="https://instagram.com/shya_udf/" data-action="dm_link">📸 DM on Instagram</a>
+          <a class="stalker-btn" id="textLink" href="https://wa.me/+18452760867" data-action="text_link">🟢 WhatsApp</a>
+        </div>
+        <p>Either of these is faster than investigative scrolling. Just saying.</p>
+      </div>
+    </section>
+
+    <!-- ── TWO-COL: RULES + EXITS ── -->
+    <section class="stalker-grid-two">
+      <article class="card stalker-card">
+        <h2>Rules of Engagement</h2>
+        <ul class="stalker-list" id="rulesList">
+          <li>Lurk responsibly.</li>
+          <li>Screenshots are permanent.</li>
+          <li>If you wanted attention, there are faster protocols.</li>
+          <li>Don't overthink the timeline.</li>
+          <li>Be cool. It's free.</li>
+        </ul>
+      </article>
+
+      <article class="card stalker-card">
+        <h2>Fast Exits</h2>
+        <p class="stalker-subcopy" style="margin-bottom:10px;">For when the guilt arrives suddenly.</p>
+        <div class="stalker-actions">
+          <a class="stalker-btn" id="homeExit" href="/" data-action="fast_exit_home">🏠 Back to Home</a>
+          <a class="stalker-btn" id="fastExitInstagram" href="https://instagram.com/shya_udf/" data-action="fast_exit_instagram">📱 Instagram</a>
+          <button id="emergencyExit" class="stalker-btn" type="button" data-action="fast_exit_emergency">🚨 I'm not stalking, I swear</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- ── INVESTIGATOR CASE FILE ── -->
+    <section class="card stalker-card stalker-case-file" id="caseFileCard" aria-live="polite" aria-atomic="true" hidden>
+      <h2>📁 Case File</h2>
+      <p><strong>Intent declared:</strong> <span id="caseIntent">Unspecified</span></p>
+      <p><strong>Lurk Level:</strong> <span id="caseLurk">12%</span></p>
+      <p><strong>Buttons engaged:</strong> <span id="caseBtns">0</span></p>
+      <p><strong>Status:</strong> Under observation (respectfully, and with full professional detachment)</p>
+      <p><strong>Prognosis:</strong> Harmless. Curious. Probably fine.</p>
+    </section>
+
+    <!-- ── RED FLAGS (NEW) ── -->
+    <section class="card stalker-card">
+      <h2>🚩 Red Flags (Yours, Not Mine)</h2>
+      <p style="margin-bottom:10px; color:rgba(11,11,11,0.7);">The system has been watching. Here's what it noticed.</p>
+      <ul class="stalker-list" id="redFlagList">
+        <li>You opened this page on purpose.</li>
+        <li>You are still reading this sentence.</li>
+        <li>You checked to see if there were more flags.</li>
+      </ul>
+      <p class="stalker-tiny" style="margin-top:8px;">Red flags are added automatically as you interact. This is normal behavior assessment.</p>
+    </section>
+
+    <!-- ── EXTRA FILES ── -->
+    <section class="card stalker-card">
+      <h2>Witness Statements</h2>
+      <ul class="stalker-list">
+        <li>"I was just browsing." — every suspect, immediately.</li>
+        <li>"I clicked by accident." — repeated with unusual confidence.</li>
+        <li>"No comment." — after clicking seven buttons in a row.</li>
+      </ul>
+    </section>
+
+    <section class="card stalker-card">
+      <h2>Reputation Recovery Plan</h2>
+      <p>Step 1: Send a normal message.</p>
+      <p>Step 2: Pretend this page never happened.</p>
+      <p>Step 3: It probably worked.</p>
+    </section>
+
+    <!-- ── LEAD FORM ── -->
+    <section class="card stalker-card stalker-lead-card">
+      <h2>If you're going to lurk, at least say hi.</h2>
+      <p class="stalker-subcopy">If you're too shy to reach out first, drop a contact and I can go first.</p>
+
+      <form id="leadForm" class="stalker-lead-form" novalidate>
+        <label for="leadName">Name</label>
+        <input id="leadName" name="lead_name" type="text" autocomplete="name" required placeholder="No aliases today." />
+        <p class="field-error" id="leadNameError"></p>
+
+        <label for="leadPhone">Phone number</label>
+        <input id="leadPhone" name="phone" type="tel" autocomplete="tel" minlength="10" placeholder="Optional, but useful" />
+        <p class="field-error" id="leadPhoneError"></p>
+
+        <label for="leadEmail">Email</label>
+        <input id="leadEmail" name="lead_email" type="email" autocomplete="email" placeholder="Optional, but respectable" />
+
+        <label for="leadInsta">Instagram handle</label>
+        <input id="leadInsta" name="lead_insta" type="text" autocomplete="off" placeholder="@optional but highly efficient" />
+        <p class="field-error" id="leadContactError"></p>
+        <p class="stalker-tiny">Pick at least one: phone, email, or Instagram handle. One is enough.</p>
+
+        <label for="leadReason">Why are you really here?</label>
+        <select id="leadReason" name="why_here" required>
+          <option value="">Be honest. Select one.</option>
+          <option>I'm just curious</option>
+          <option>I heard your name</option>
+          <option>Research (totally normal)</option>
+          <option>Vibe check</option>
+          <option>I clicked by accident</option>
+          <option>I'm not stalking</option>
+          <option>Legit i'm stalking</option>
+        </select>
+        <p class="field-error" id="leadReasonError"></p>
+
+        <label class="checkbox-row" for="leadConsent">
+          <input id="leadConsent" name="lead_consent" type="checkbox" />
+          <span>You can text me about this. (Optional)</span>
+        </label>
+
+        <input type="hidden" id="firstName" name="firstName" />
+        <input type="hidden" id="lastName" name="lastName" />
+        <input type="hidden" id="email" name="email" />
+        <textarea id="reason" name="reason" hidden></textarea>
+
+        <button id="leadSubmit" class="stalker-btn stalker-btn-strong" type="submit" data-action="lead_submit">📤 Send It</button>
+      </form>
+
+      <p class="stalker-tiny">🔒</p>
+      <p id="leadStatus" class="stalker-small" aria-live="polite"></p>
+  
+
+    <!-- ── STALKER EVAL ── -->
+    <section class="card stalker-card stalker-eval-card">
+      <h2>Stalker Evaluation</h2>
+      <p>Before you unlock the Q&amp;A file, we need to measure the situation. This is standard protocol. We do this for everyone. You're not special. (You might be a little special.)</p>
+      <p class="stalker-tiny" style="margin-top:6px;">Score criteria: Clicks, honesty, scroll depth, and whether you checked the page title before opening this tab.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <span class="copyright-part">&copy; 2026 Udoff Web Development</span>
+    <span class="rights-part"><i>all rights reserved</i></span>
+    <p class="stalker-note">This page is the evaluation gate. The Ask About Me page lands next. You've been warned warmly.</p>
+  </footer>
+
+  <!-- Toast notification -->
+  <div class="stalker-toast" id="stalkerToast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="./stalker.js"></script>
+</body>
+</html>

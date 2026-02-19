@@ -1,0 +1,513 @@
+/* stalker.css — enhanced edition
+   Inherits colors, cards, fonts from style.css
+   Adds stalker-specific layout, jokes, animations */
+
+/* ── MAIN LAYOUT ───────────────────────────── */
+.stalker-main {
+  width: min(980px, 94%);
+  margin: 0 auto;
+  padding: 112px 0 44px;
+  display: grid;
+  gap: 14px;
+}
+
+/* ── CARD BASE ─────────────────────────────── */
+.stalker-card {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.22s ease;
+}
+
+.stalker-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Staggered entrance animations */
+.stalker-main > *:nth-child(1)  { animation: cardIn 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) 0.04s both; }
+.stalker-main > *:nth-child(2)  { animation: cardIn 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) 0.10s both; }
+.stalker-main > *:nth-child(3)  { animation: cardIn 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) 0.15s both; }
+.stalker-main > *:nth-child(4)  { animation: cardIn 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) 0.20s both; }
+.stalker-main > *:nth-child(5)  { animation: cardIn 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) 0.24s both; }
+.stalker-main > *:nth-child(6)  { animation: cardIn 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) 0.27s both; }
+.stalker-main > *:nth-child(7)  { animation: cardIn 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) 0.30s both; }
+.stalker-main > *:nth-child(8)  { animation: cardIn 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) 0.33s both; }
+.stalker-main > *:nth-child(9)  { animation: cardIn 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) 0.36s both; }
+.stalker-main > *:nth-child(10) { animation: cardIn 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) 0.38s both; }
+.stalker-main > *:nth-child(11) { animation: cardIn 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) 0.40s both; }
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── KICKER ─────────────────────────────────── */
+.stalker-kicker {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgba(11, 11, 11, 0.62);
+  margin-bottom: 4px;
+}
+
+/* ── HERO H1 ─────────────────────────────────── */
+.stalker-hero h1 {
+  margin-bottom: 8px;
+  font-size: 2rem;
+  animation: heroWobble 0.65s cubic-bezier(0.34, 1.9, 0.64, 1) 0.2s both;
+}
+
+@keyframes heroWobble {
+  from { opacity: 0; transform: scale(0.82) rotate(-1.5deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.stalker-subtitle {
+  color: rgba(11, 11, 11, 0.72);
+  margin-bottom: 12px;
+}
+
+/* ── LIVE MONITOR BANNER ─────────────────────── */
+.stalker-monitor-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(11, 11, 11, 0.1);
+  font-size: 0.82rem;
+  color: rgba(11, 11, 11, 0.65);
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.monitor-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #27ae60;
+  flex-shrink: 0;
+  animation: dotPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(39,174,96,0.4); }
+  50%       { opacity: 0.6; transform: scale(0.75); box-shadow: 0 0 0 5px rgba(39,174,96,0); }
+}
+
+/* ── MODE SWITCH ────────────────────────────── */
+.mode-switch {
+  display: inline-grid;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  border: 1px solid rgba(11, 11, 11, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.mode-tab {
+  border: none;
+  border-right: 1px solid rgba(11, 11, 11, 0.12);
+  background: transparent;
+  color: rgba(11, 11, 11, 0.74);
+  padding: 8px 14px;
+  min-height: 44px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.mode-tab:last-child { border-right: none; }
+.mode-tab.active {
+  background: rgba(11, 11, 11, 0.88);
+  color: #ffffff;
+}
+.mode-tab:active { transform: scale(0.96); }
+
+.stalker-hint {
+  font-size: 0.82rem;
+  color: rgba(11, 11, 11, 0.58);
+  margin-bottom: 12px;
+}
+
+/* ── INTENT GRID ────────────────────────────── */
+.stalker-intent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+/* ── BUTTONS ─────────────────────────────────── */
+.stalker-btn {
+  border: 1px solid rgba(11, 11, 11, 0.2);
+  background: rgba(255, 255, 255, 0.7);
+  color: #0b0b0b;
+  border-radius: 11px;
+  padding: 10px 13px;
+  min-height: 44px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease,
+              transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.2s ease,
+              box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stalker-btn:hover {
+  background: rgba(255, 255, 255, 0.88);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.09);
+}
+
+.stalker-btn:active { transform: scale(0.95); }
+
+.stalker-btn-strong {
+  background: rgba(11, 11, 11, 0.88);
+  color: #ffffff;
+  border-color: rgba(11, 11, 11, 0.88);
+}
+.stalker-btn-strong:hover { background: rgba(11, 11, 11, 0.96); }
+
+.stalker-btn-ghost {
+  opacity: 0.65;
+  border-style: dashed;
+}
+.stalker-btn-ghost:hover { opacity: 1; }
+
+.stalker-intent-btn.active {
+  background: rgba(11, 11, 11, 0.88);
+  color: #ffffff;
+  border-color: rgba(11, 11, 11, 0.88);
+  transform: scale(1.02);
+}
+
+/* Shake for dramatic effect */
+@keyframes shakeIt {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-6px) rotate(-0.5deg); }
+  40%     { transform: translateX(5px) rotate(0.5deg); }
+  60%     { transform: translateX(-4px); }
+  80%     { transform: translateX(3px); }
+}
+.is-shaking { animation: shakeIt 0.5s ease both !important; }
+
+/* ── LURK METER ──────────────────────────────── */
+.stalker-meter-wrap {
+  border: 1px solid rgba(11, 11, 11, 0.12);
+  border-radius: 11px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.stalker-meter-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7px;
+}
+.stalker-meter-head h2 { font-size: 1rem; }
+
+#lurkValue {
+  font-weight: 700;
+  transition: transform 0.3s cubic-bezier(0.34, 1.8, 0.64, 1), color 0.4s ease;
+  display: inline-block;
+}
+#lurkValue.pop {
+  animation: lurkPop 0.35s cubic-bezier(0.34, 1.9, 0.64, 1) both;
+}
+@keyframes lurkPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+.stalker-meter-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(11, 11, 11, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.stalker-meter-fill {
+  width: 12%;
+  height: 100%;
+  background: rgba(11, 11, 11, 0.82);
+  transition: width 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), background 0.5s ease;
+  position: relative;
+}
+
+.stalker-meter-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -70%; width: 55%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  animation: shimmer 2s linear infinite;
+}
+@keyframes shimmer { from { left: -70%; } to { left: 130%; } }
+
+.stalker-meter-fill.suspicious { background: rgba(180, 80, 0, 0.82); }
+.stalker-meter-fill.busted      { background: rgba(180, 20, 20, 0.88); }
+
+.stalker-meter-label {
+  margin-top: 8px;
+  font-size: 0.92rem;
+  color: rgba(11, 11, 11, 0.7);
+  font-style: italic;
+  transition: color 0.4s ease;
+}
+
+/* ── REVEAL ANIMATIONS ───────────────────────── */
+.stalker-result,
+.stalker-verdict-output,
+.stalker-hi-panel,
+.stalker-small,
+.copy-fade {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.24s ease,
+              transform 0.28s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.stalker-result.is-visible,
+.stalker-verdict-output.is-visible,
+.stalker-hi-panel.is-visible,
+.stalker-small.is-visible,
+.copy-fade.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── LINE CARD ────────────────────────────────── */
+.stalker-line-card h2 { font-size: 1.3rem; margin-bottom: 3px; }
+.stalker-line-card p, .stalker-subcopy { color: rgba(11, 11, 11, 0.7); }
+
+/* ── VERDICT ──────────────────────────────────── */
+.stalker-verdict { display: grid; gap: 10px; }
+
+.stalker-verdict-output {
+  border-top: 1px solid rgba(11, 11, 11, 0.12);
+  padding-top: 10px;
+}
+
+.stalker-verdict-line { margin-top: 6px; font-weight: 600; }
+
+.stalker-small {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: rgba(11, 11, 11, 0.65);
+  min-height: 1.1em;
+}
+
+/* Loading dots for verdict */
+.loading-dots span {
+  display: inline-block;
+  animation: dotBounce 1s ease-in-out infinite;
+}
+.loading-dots span:nth-child(2) { animation-delay: 0.15s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.30s; }
+@keyframes dotBounce {
+  0%,80%,100% { transform: translateY(0); }
+  40%          { transform: translateY(-4px); }
+}
+
+/* ── CTA / SAY HI ─────────────────────────────── */
+.stalker-cta-card { display: grid; gap: 10px; }
+
+.stalker-hi-panel {
+  border-top: 1px solid rgba(11, 11, 11, 0.12);
+  padding-top: 10px;
+}
+
+.stalker-hi-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.stalker-hi-panel p { color: rgba(11, 11, 11, 0.72); }
+
+/* ── COUNTERS ────────────────────────────────── */
+.stalker-counter-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.stalker-chip {
+  font-size: 0.78rem;
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(11, 11, 11, 0.12);
+  border-radius: 999px;
+  padding: 3px 11px;
+  color: rgba(11, 11, 11, 0.62);
+  transition: background 0.2s;
+}
+.stalker-chip strong { color: #0b0b0b; font-weight: 700; }
+
+/* ── TWO-COL GRID ─────────────────────────────── */
+.stalker-grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+/* ── LIST ─────────────────────────────────────── */
+.stalker-list {
+  padding-left: 18px;
+  line-height: 1.6;
+  color: rgba(11, 11, 11, 0.78);
+}
+
+.stalker-list li {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+  cursor: default;
+}
+.stalker-list li:hover { transform: translateX(5px); }
+
+.stalker-actions { display: grid; gap: 10px; }
+
+/* ── CASE FILE ─────────────────────────────────── */
+.stalker-case-file p { margin-top: 6px; color: rgba(11, 11, 11, 0.76); }
+
+/* ── EVIDENCE TICKER ─────────────────────────── */
+.stalker-evidence-ticker {
+  font-size: 0.78rem;
+  color: rgba(11, 11, 11, 0.5);
+  border-top: 1px solid rgba(11, 11, 11, 0.08);
+  padding-top: 8px;
+  margin-top: 10px;
+  font-style: italic;
+  min-height: 1.4em;
+}
+
+/* ── EMERGENCY EXIT ──────────────────────────── */
+#emergencyExit.panic {
+  background: rgba(220, 50, 50, 0.12) !important;
+  border-color: rgba(220, 50, 50, 0.4) !important;
+  color: #7a1010;
+  animation: panicBounce 0.4s cubic-bezier(0.34, 1.9, 0.64, 1) both;
+}
+@keyframes panicBounce {
+  from { transform: scale(0.88) rotate(-2deg); }
+  to   { transform: scale(1) rotate(0); }
+}
+
+/* ── LEAD FORM ─────────────────────────────────── */
+.stalker-lead-card { display: grid; gap: 10px; }
+.stalker-lead-form { display: grid; gap: 8px; }
+
+.stalker-lead-form label { font-size: 0.95rem; font-weight: 600; }
+
+.stalker-lead-form input,
+.stalker-lead-form select,
+.stalker-lead-form textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(11, 11, 11, 0.2);
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 16px;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+}
+
+.stalker-lead-form input:focus,
+.stalker-lead-form select:focus {
+  outline: 2px solid rgba(11, 11, 11, 0.22);
+  outline-offset: 1px;
+  transform: scale(1.005);
+}
+
+.checkbox-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 8px;
+  margin-top: 4px;
+}
+.checkbox-row input { width: 16px; height: 16px; margin-top: 2px; }
+
+.field-error {
+  min-height: 1em;
+  font-size: 0.82rem;
+  color: #8a1f1f;
+  animation: errJiggle 0.3s ease both;
+}
+@keyframes errJiggle {
+  0%,100% { transform: translateX(0); }
+  25%     { transform: translateX(-4px); }
+  75%     { transform: translateX(4px); }
+}
+
+/* ── MISC ─────────────────────────────────────── */
+.stalker-tiny { font-size: 0.8rem; color: rgba(11, 11, 11, 0.58); }
+.stalker-lead-text-link { width: fit-content; }
+.stalker-note { margin-top: 8px; font-size: 0.82rem; color: rgba(11, 11, 11, 0.7); font-style: italic; }
+
+/* ── TOAST ────────────────────────────────────── */
+.stalker-toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(70px);
+  background: rgba(11, 11, 11, 0.88);
+  color: #fff;
+  padding: 11px 22px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  z-index: 999;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.stalker-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ── SCROLL INDICATOR ─────────────────────────── */
+.stalker-scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: rgba(11, 11, 11, 0.7);
+  z-index: 200;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* ── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 760px) {
+  .stalker-main { padding-top: 88px; }
+
+  .stalker-intent-grid,
+  .stalker-grid-two,
+  .stalker-hi-actions,
+  .mode-switch { grid-template-columns: 1fr; }
+
+  .mode-tab {
+    border-right: none;
+    border-bottom: 1px solid rgba(11, 11, 11, 0.12);
+  }
+  .mode-tab:last-child { border-bottom: none; }
+
+  .stalker-toast { max-width: 88vw; white-space: normal; text-align: center; font-size: 0.82rem; }
+}
