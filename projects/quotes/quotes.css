@@ -1,0 +1,291 @@
+/* =========================
+   QUOTES PAGE — quotes.css
+   Glassmorphism base +
+   warm gold accent twist
+   ========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+
+/* ── Warm ambient glow ── */
+body.quotes-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 10%, rgba(255, 210, 100, 0.11) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 85% 85%, rgba(255, 160, 50, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body.quotes-page {
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+/* ── Main layout ── */
+.quotes-main {
+  position: relative;
+  z-index: 1;
+  width: min(1060px, 93vw);
+  margin: 2.5rem auto 5rem;
+}
+
+/* ── Page header ── */
+.quotes-header-container {
+  text-align: center;
+  margin-bottom: 2.8rem;
+  animation: fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.quotes-header-container h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: #0b0b0b;
+  margin-bottom: 0.5rem;
+}
+
+.quotes-header-container p {
+  font-size: 1rem;
+  color: rgba(11, 11, 11, 0.58);
+  margin: 0;
+}
+
+/* ── Admin link ── */
+.admin-link-wrap {
+  margin-top: 1.1rem;
+}
+
+.admin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, 0.30);
+  text-decoration: none;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(8px);
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.admin-link:hover {
+  color: rgba(11, 11, 11, 0.65);
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* ── Loading state ── */
+.quotes-loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: rgba(11, 11, 11, 0.45);
+  font-style: italic;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 2.5px solid rgba(245, 200, 66, 0.25);
+  border-top-color: #e8893a;
+  border-radius: 50%;
+  animation: spin 0.85s linear infinite;
+}
+
+/* ── Quotes grid ── */
+.quotes-grid {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 580px) {
+  .quotes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 880px) {
+  .quotes-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* ── Quote card ── */
+.quote-card {
+  position: relative;
+  padding: 1.7rem 1.6rem 1.3rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.50);
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s ease;
+}
+
+/* Staggered entrance delays */
+.quote-card:nth-child(1)  { animation-delay: 0.06s; }
+.quote-card:nth-child(2)  { animation-delay: 0.12s; }
+.quote-card:nth-child(3)  { animation-delay: 0.18s; }
+.quote-card:nth-child(4)  { animation-delay: 0.24s; }
+.quote-card:nth-child(5)  { animation-delay: 0.30s; }
+.quote-card:nth-child(6)  { animation-delay: 0.36s; }
+.quote-card:nth-child(7)  { animation-delay: 0.42s; }
+.quote-card:nth-child(8)  { animation-delay: 0.48s; }
+.quote-card:nth-child(9)  { animation-delay: 0.54s; }
+.quote-card:nth-child(10) { animation-delay: 0.60s; }
+
+/* Gold left accent bar — the twist */
+.quote-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 22px;
+  bottom: 22px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, #f5c842 0%, #e8893a 100%);
+  opacity: 0.70;
+  transition: opacity 0.28s ease, top 0.28s ease, bottom 0.28s ease;
+}
+
+/* Large decorative quotation mark */
+.quote-card::after {
+  content: '\201C';
+  position: absolute;
+  top: -8px;
+  right: 14px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 6rem;
+  line-height: 1;
+  color: rgba(245, 200, 66, 0.13);
+  pointer-events: none;
+  user-select: none;
+  transition: color 0.28s ease;
+}
+
+/* Hover lift */
+.quote-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 44px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.60);
+}
+
+.quote-card:hover::before {
+  opacity: 1;
+  top: 14px;
+  bottom: 14px;
+}
+
+.quote-card:hover::after {
+  color: rgba(245, 200, 66, 0.26);
+}
+
+/* Quote text */
+.quote-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.02rem;
+  line-height: 1.68;
+  color: #1a1a1a;
+  margin: 0 0 0.85rem;
+  padding-left: 10px;
+}
+
+/* Author */
+.quote-author {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.80rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, 0.50);
+  margin: 0 0 0.85rem;
+  padding-left: 10px;
+}
+
+/* Copy button */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 10px;
+  padding: 5px 13px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(11, 11, 11, 0.55);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.77rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.18s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.copy-btn:hover {
+  background: rgba(0, 0, 0, 0.11);
+  color: #0b0b0b;
+  transform: scale(1.05);
+}
+
+.copy-btn.copied {
+  background: rgba(37, 163, 80, 0.13);
+  color: #1a7a3a;
+}
+
+/* ── Empty / error states ── */
+.quotes-empty, .quotes-error {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3.5rem 1rem;
+  color: rgba(11, 11, 11, 0.42);
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+}
+
+.quotes-error { color: rgba(180, 40, 40, 0.7); }
+
+/* ── Footer ── */
+footer.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 12px;
+  font-size: 0.85rem;
+}
+
+/* ── Keyframes ── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Mobile tweaks ── */
+@media (max-width: 420px) {
+  .quotes-header-container h1 { font-size: 1.75rem; }
+  .quote-card { padding: 1.4rem 1.3rem 1.1rem; }
+}

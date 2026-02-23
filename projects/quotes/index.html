@@ -2,29 +2,24 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3PED6JPPC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3PED6JPPC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-W3PED6JPPC');
+  </script>
 
-  gtag('config', 'G-W3PED6JPPC');
-</script>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Contact</title>
-    <link rel="stylesheet" href="../../style.css" />
-    <!-- Iconify Icon Script -->
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quotes</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="./quotes.css" />
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
-<body class="contact-page">
-
-  <!-- Navbar -->
+<body class="quotes-page">
   <nav class="navbar">
-
-    <!-- Mobile hamburger (must be outside navbar-inner) -->
-    <div class="mobile-toggle" id="mobileToggle">
+    <div class="mobile-toggle" id="mobileToggle" aria-label="Open navigation" role="button" tabindex="0">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
@@ -40,92 +35,74 @@
         <li><a href="../../contact/">Contact</a></li>
       </ul>
     </div>
-
   </nav>
 
-  <!-- Mobile side panel -->
   <div class="side-panel" id="sidePanel">
-    <button class="close-btn" id="closePanel">&times;</button>
+    <button class="close-btn" id="closePanel" aria-label="Close navigation">&times;</button>
     <nav>
       <ul>
         <li><a href="../../home/">Home</a></li>
         <li><a href="../../photopage/">Photos</a></li>
-        <li><a href="../../projects/">Projects</a></li>
+        <li><a href="../../projects/" class="active">Projects</a></li>
         <li><a href="../../about/">About</a></li>
-        <li><a href="../../contact/" class="active">Contact</a></li>
+        <li><a href="../../contact/">Contact</a></li>
       </ul>
     </nav>
   </div>
 
-  <!-- Page Content -->
-  <div class="quotes-header-container">
-    <h2>Quotes for Wisdom and Inspiration</h2>
-    <h5>If one inspires you, hit that copy button and inspire others</h5>
-  </div>
+  <!-- ── Main ── -->
+  <main class="quotes-main">
 
-  <!-- Example Quote Card -->
-  <div class="quote-card">
-    <span class="quote-text">It is not what we do, but also what we do not do, for which we are accountable.</span>
-    <span class="quote-author">– Maimonides</span>
-    <button class="copy-btn" onclick="copyQuote(this)">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </button>
-  </div>
-  
-  <div class="quote-card">
-    <span class="quote-text">You can not teach a man anything, you can only help him to find it within himself.</span>
-    <span class="quote-author">– Galileo</span>
-    <button class="copy-btn" onclick="copyQuote(this)">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </button>
-  </div>
+    <header class="quotes-header-container">
+      <h1>Quotes for Wisdom &amp; Inspiration</h1>
+      <p>If one resonates, hit copy and share it with someone.</p>
+      <div class="admin-link-wrap">
+        <a href="./admin/" class="admin-link" aria-label="Admin panel">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          Admin
+        </a>
+      </div>
+    </header>
 
-<script>
-function copyQuote(btn) {
-  const quoteCard = btn.closest('.quote-card');
-  const text = quoteCard.querySelector('.quote-text').innerText + " " + quoteCard.querySelector('.quote-author').innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    alert("Quote copied to clipboard!");
-  });
-}
+    <section class="quotes-grid" id="quotesGrid" aria-label="Quotes collection">
+      <!-- Populated by quotes.js -->
+    </section>
 
-function downloadQuote(btn) {
-  const quoteCard = btn.closest('.quote-card');
-  const text = quoteCard.querySelector('.quote-text').innerText + "\n" + quoteCard.querySelector('.quote-author').innerText;
-  const blob = new Blob([text], {type: "text/plain"});
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = "quote.txt";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-</script>
-<!-- Footer -->
+    <section class="quotes-grid" id="quotesGrid" aria-label="Quotes">
+      <article class="quote-card" data-quote="It is not what we do, but also what we do not do, for which we are accountable." data-author="Maimonides">
+        <p class="quote-text">It is not what we do, but also what we do not do, for which we are accountable.</p>
+        <p class="quote-author">- Maimonides</p>
+        <button class="copy-btn" type="button" aria-label="Copy quote">
+          Copy
+        </button>
+      </article>
+
+      <article class="quote-card" data-quote="You cannot teach a man anything, you can only help him find it within himself." data-author="Galileo">
+        <p class="quote-text">You cannot teach a man anything, you can only help him find it within himself.</p>
+        <p class="quote-author">- Galileo</p>
+        <button class="copy-btn" type="button" aria-label="Copy quote">
+          Copy
+        </button>
+      </article>
+
+      <article class="quote-card" data-quote="People will forget what you said, people will forget what you did, but people will never forget how you made them feel." data-author="Maya Angelou">
+        <p class="quote-text">People will forget what you said, people will forget what you did, but people will never forget how you made them feel.</p>
+        <p class="quote-author">- Maya Angelou</p>
+        <button class="copy-btn" type="button" aria-label="Copy quote">
+          Copy
+        </button>
+      </article>
+    </section>
+  </main>
+
   <footer class="card">
     <span class="copyright-part">&copy; 2025 Udoff Web Development</span>
     <span class="rights-part"><i>All rights reserved</i></span>
   </footer>
 
-  <!-- Mobile toggle script -->
-  <script>
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const sidePanel = document.getElementById('sidePanel');
-    const closePanel = document.getElementById('closePanel');
-
-    mobileToggle.addEventListener('click', () => {
-      sidePanel.classList.add('open');
-    });
-
-    closePanel.addEventListener('click', () => {
-      sidePanel.classList.remove('open');
-    });
-  </script>
+  <script src="./quotes.js"></script>
 </body>
 </html>

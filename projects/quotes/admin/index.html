@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Quotes</title>
+  <link rel="stylesheet" href="../../../style.css" />
+  <link rel="stylesheet" href="./admin.css" />
+</head>
+<body class="quotes-page admin-page">
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <div class="mobile-toggle" id="mobileToggle" aria-label="Open navigation" role="button" tabindex="0">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <div class="navbar-inner">
+      <div class="brand">Shaya Udoff</div>
+      <ul>
+        <li><a href="../../../home/">Home</a></li>
+        <li><a href="../../../photopage/">Photos</a></li>
+        <li><a href="../../../projects/">Projects</a></li>
+        <li><a href="../../../about/">About</a></li>
+        <li><a href="../../../contact/">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Mobile side panel ── -->
+  <div class="side-panel" id="sidePanel">
+    <button class="close-btn" id="closePanel" aria-label="Close navigation">&times;</button>
+    <nav>
+      <ul>
+        <li><a href="../../../home/">Home</a></li>
+        <li><a href="../../../photopage/">Photos</a></li>
+        <li><a href="../../../projects/">Projects</a></li>
+        <li><a href="../../../about/">About</a></li>
+        <li><a href="../../../contact/">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- ── Lock screen ── -->
+  <div class="admin-wrap" id="lockScreen">
+    <div class="admin-card" id="lockCard">
+      <div class="admin-lock-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <h1>Admin Access</h1>
+      <p>Enter your password to manage quotes.</p>
+
+      <div class="admin-form-group">
+        <input
+          type="password"
+          id="passwordInput"
+          class="admin-input"
+          placeholder="Password"
+          autocomplete="current-password"
+          aria-label="Admin password"
+        />
+      </div>
+      <p class="admin-error" id="lockError" aria-live="polite"></p>
+      <button class="admin-btn-primary" id="unlockBtn" type="button">
+        Unlock
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <a href="../" class="admin-back-link">← Back to quotes</a>
+    </div>
+  </div>
+
+  <!-- ── Admin dashboard (hidden until unlocked) ── -->
+  <div class="admin-wrap" id="dashboardScreen" style="display:none;">
+
+    <!-- Add quote card -->
+    <div class="admin-card" id="addCard">
+      <div class="admin-header">
+        <h1>Add a Quote</h1>
+        <button class="admin-logout-btn" id="logoutBtn" type="button" aria-label="Log out">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          Log out
+        </button>
+      </div>
+
+      <div class="admin-form-group">
+        <label for="quoteText" class="admin-label">Quote</label>
+        <textarea
+          id="quoteText"
+          class="admin-textarea"
+          placeholder="Enter the quote…"
+          rows="4"
+          aria-label="Quote text"
+        ></textarea>
+      </div>
+
+      <div class="admin-form-group">
+        <label for="quoteAuthor" class="admin-label">Author</label>
+        <input
+          type="text"
+          id="quoteAuthor"
+          class="admin-input"
+          placeholder="e.g. Marcus Aurelius"
+          aria-label="Quote author"
+        />
+      </div>
+
+      <p class="admin-error" id="formError" aria-live="polite"></p>
+      <p class="admin-success" id="formSuccess" aria-live="polite"></p>
+
+      <button class="admin-btn-primary" id="addQuoteBtn" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        Add Quote
+      </button>
+    </div>
+
+    <!-- Existing quotes list -->
+    <div class="admin-card admin-list-card" id="listCard">
+      <h2>Existing Quotes <span class="quote-count" id="quoteCount"></span></h2>
+      <div id="adminQuotesList" class="admin-quotes-list">
+        <div class="admin-list-loading">
+          <div class="spinner"></div>
+          <span>Loading…</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="./admin.js"></script>
+</body>
+</html>
