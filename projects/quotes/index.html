@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3PED6JPPC"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-W3PED6JPPC');
   </script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quotes</title>
+  <title>Quotes — Shaya Udoff</title>
+  <meta name="description" content="A collection of quotes that inspire Shaya Udoff." />
   <link rel="stylesheet" href="../../style.css" />
   <link rel="stylesheet" href="./quotes.css" />
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body class="quotes-page">
+
+  <!-- ── Navbar ── -->
   <nav class="navbar">
     <div class="mobile-toggle" id="mobileToggle" aria-label="Open navigation" role="button" tabindex="0">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </div>
-
     <div class="navbar-inner">
       <div class="brand">Shaya Udoff</div>
       <ul>
@@ -37,6 +37,7 @@
     </div>
   </nav>
 
+  <!-- ── Mobile side panel ── -->
   <div class="side-panel" id="sidePanel">
     <button class="close-btn" id="closePanel" aria-label="Close navigation">&times;</button>
     <nav>
@@ -71,31 +72,6 @@
       <!-- Populated by quotes.js -->
     </section>
 
-    <section class="quotes-grid" id="quotesGrid" aria-label="Quotes">
-      <article class="quote-card" data-quote="It is not what we do, but also what we do not do, for which we are accountable." data-author="Maimonides">
-        <p class="quote-text">It is not what we do, but also what we do not do, for which we are accountable.</p>
-        <p class="quote-author">- Maimonides</p>
-        <button class="copy-btn" type="button" aria-label="Copy quote">
-          Copy
-        </button>
-      </article>
-
-      <article class="quote-card" data-quote="You cannot teach a man anything, you can only help him find it within himself." data-author="Galileo">
-        <p class="quote-text">You cannot teach a man anything, you can only help him find it within himself.</p>
-        <p class="quote-author">- Galileo</p>
-        <button class="copy-btn" type="button" aria-label="Copy quote">
-          Copy
-        </button>
-      </article>
-
-      <article class="quote-card" data-quote="People will forget what you said, people will forget what you did, but people will never forget how you made them feel." data-author="Maya Angelou">
-        <p class="quote-text">People will forget what you said, people will forget what you did, but people will never forget how you made them feel.</p>
-        <p class="quote-author">- Maya Angelou</p>
-        <button class="copy-btn" type="button" aria-label="Copy quote">
-          Copy
-        </button>
-      </article>
-    </section>
   </main>
 
   <footer class="card">

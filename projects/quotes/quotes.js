@@ -8,8 +8,8 @@
 // !! REPLACE THESE WITH YOUR OWN !!
 // Get them from supabase.com → your project → Settings → API
 // ─────────────────────────────────────
-const SUPABASE_URL  = 'https://YOUR_PROJECT_ID.supabase.co';
-const SUPABASE_ANON = 'YOUR_ANON_PUBLIC_KEY';
+const SUPABASE_URL  = 'https://lzsxfmvvgnhoktxuhffy.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6c3hmbXZ2Z25ob2t0eHVoZmZ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcyODEwMjQsImV4cCI6MjA4Mjg1NzAyNH0.Gx60NpGYhHSv9oHiUJtGPC-GuY8u5-hmss78o2Rxj8w';
 // ─────────────────────────────────────
 
 const CACHE_KEY = 'shaya_quotes_cache_v1';
