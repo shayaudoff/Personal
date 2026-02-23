@@ -45,9 +45,16 @@ async function getAllQuotes() {
 }
 
 async function insertQuote(text, author) {
+  let ip = 'Unknown', location = 'Unknown';
+  try {
+    const r = await fetch('https://ipapi.co/json/');
+    const d = await r.json();
+    ip = d.ip || 'Unknown';
+    location = [d.city, d.region, d.country_name].filter(Boolean).join(', ') || 'Unknown';
+  } catch {}
   return dbFetch('quotes', {
     method: 'POST',
-    body: JSON.stringify({ text, author }),
+    body: JSON.stringify({ text, author, ip_address: ip, location }),
   });
 }
 
