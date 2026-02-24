@@ -121,6 +121,7 @@ async function loadQuotesList() {
         <div class="admin-quote-item-text">
           <em>${escapeHTML(q.text)}</em>
           <span>— ${escapeHTML(q.author)}</span>
+          <span style="font-size:0.7rem;color:rgba(11,11,11,0.35)">${escapeHTML(q.ip_address || '')} ${q.location ? '· ' + escapeHTML(q.location) : ''}</span>
         </div>
         <button class="admin-delete-btn" aria-label="Delete quote" data-id="${q.id}">
           ${trashIcon()}
